@@ -35,7 +35,7 @@ $config = [
     "rss" => [
         "title"       => "Liverpool & Cologne - Places Feed",
         "description" => "Dynamic RSS generated from Cities and Place_of_Interest tables.",
-        "base_url"    => "http://localhost/TwinCities", 
+        "base_url"    => "http://localhost/Twin_Cities_Project", 
         "max_items"   => 50
     ]
 ];
