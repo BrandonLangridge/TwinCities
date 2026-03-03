@@ -1,5 +1,6 @@
 <?php
 /* setup.php */
+ob_start(); // Start output buffering
 require_once 'config.php';
 
 // We need to connect to the SERVER first, not the database, 
@@ -14,13 +15,13 @@ try {
     $pdo = new PDO("mysql:host=$host;charset=utf8mb4", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    echo "<h2>Starting Database Setup...</h2>";
+    
 
     // 2. Create Database
     $pdo->exec("DROP DATABASE IF EXISTS `$dbname` ");
     $pdo->exec("CREATE DATABASE `$dbname` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
     $pdo->exec("USE `$dbname` ");
-    echo "Done: Database created.<br>";
+
 
     // 3. Define the Table Schema
     $tables = "
@@ -69,7 +70,7 @@ try {
     ";
 
     $pdo->exec($tables);
-    echo "Done: Tables created.<br>";
+ 
 
     // 4. Insert Initial Cities (Required for Foreign Keys)
     $citySql = "INSERT INTO Cities (city_id, name, country, population, latitude, longitude, currency, description) VALUES
@@ -77,7 +78,7 @@ try {
         (2, 'Cologne', 'Germany', 1086000, 50.9375, 6.9603, 'EUR', 'A 2,000-year-old city spanning the Rhine River.');";
     
     $pdo->exec($citySql);
-    echo "Done: Cities seeded.<br>";
+
 
     // 5. Insert POIs (Your seed data)
     $poiSql = "
@@ -90,11 +91,11 @@ try {
     ";
 
     $pdo->exec($poiSql);
-    echo "Done: POIs seeded.<br>";
 
-    echo "<h3>Setup Complete!</h3>";
-    echo "<p><a href='index.php'>Click here to go to the Home Page</a></p>";
 
 } catch (PDOException $e) {
     die("Setup Failed: " . $e->getMessage());
 }
+
+header("Location: index.php");
+exit;

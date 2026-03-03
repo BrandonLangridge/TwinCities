@@ -39,15 +39,29 @@ $config = [
 ];
 
 // Establish PDO Connection
-// This creates the $pdo object so other files can use it immediately.
+// Establish PDO Connection
 try {
-    $dsn = "mysql:host=" . $config['db']['host'] . ";dbname=" . $config['db']['name'] . ";charset=" . $config['db']['charset'];
+    // 1. Connect to the HOST only. 
+    // We removed 'dbname' so the connection works even if the DB doesn't exist yet.
+    $dsn = "mysql:host=" . $config['db']['host'] . ";charset=" . $config['db']['charset'];
     $pdo = new PDO($dsn, $config['db']['user'], $config['db']['pass']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // 2. Only try to select the specific database if we are NOT on the setup page.
+    if (basename($_SERVER['PHP_SELF']) !== 'setup.php') {
+        $pdo->exec("USE `" . $config['db']['name'] . "`");
+    }
+
 } catch (PDOException $e) {
-    // If the connection fails, show a clear message
-    die("Global Config Error: Database Connection Failed - " . $e->getMessage());
+
+    // If database does not exist, automatically run setup
+    if (strpos($e->getMessage(), 'Unknown database') !== false) {
+        header("Location: setup.php");
+        exit;
+    }
+
+    // Any other database error
+    die("Database Connection Failed: " . $e->getMessage());
 }
 
-// Return the array (for files that still need the settings)
 return $config;
