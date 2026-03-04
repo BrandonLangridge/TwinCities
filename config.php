@@ -4,6 +4,14 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+// Determine protocol and host dynamically
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
+$host = $_SERVER['HTTP_HOST'];
+$basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\'); 
+if ($basePath === '') $basePath = ''; // root folder fallback
+$base_url = $protocol . '://' . $host . $basePath;
+
 // Define Settings Array
 $config = [
     "db" => [
@@ -32,15 +40,16 @@ $config = [
         " 
     ],
 
-    "rss" => [
-        "title"       => "Liverpool & Cologne - Places Feed",
-        "description" => "Dynamic RSS generated from Cities and Place_of_Interest tables.",
-        "base_url"    => "http://localhost/TwinCities", 
-        "max_items"   => 50
-    ]
+// RSS configuration
+"rss" => [
+    "title"       => "Liverpool & Cologne - Places Feed",
+    "description" => "Dynamic RSS generated from Cities and Place_of_Interest tables.",
+    "base_url"    => $base_url,  // <-- use the variable calculated above
+    "max_items"   => 50
+]
+
 ];
 
-// Establish PDO Connection
 // Establish PDO Connection
 try {
     // 1. Connect to the HOST only. 
