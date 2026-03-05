@@ -40,25 +40,23 @@ $config = [
         " 
     ],
 
-// RSS configuration
-"rss" => [
-    "title"       => "Liverpool & Cologne - Places Feed",
-    "description" => "Dynamic RSS generated from Cities and Place_of_Interest tables.",
-    "base_url"    => $base_url,  // <-- use the variable calculated above
-    "max_items"   => 50
-]
-
+    "rss" => [
+        "title"       => "Liverpool & Cologne - Places Feed",
+        "description" => "Dynamic RSS generated from Cities and Place_of_Interest tables.",
+        "base_url"    => "http://localhost/TwinCities", 
+        "max_items"   => 50
+    ]
 ];
 
 // Establish PDO Connection
 try {
-    // 1. Connect to the HOST only. 
-    // We removed 'dbname' so the connection works even if the DB doesn't exist yet.
+    // Connect to the HOST only. 
+    // Connection works even if the DB doesn't exist yet.
     $dsn = "mysql:host=" . $config['db']['host'] . ";charset=" . $config['db']['charset'];
     $pdo = new PDO($dsn, $config['db']['user'], $config['db']['pass']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // 2. Only try to select the specific database if we are NOT on the setup page.
+    // Only try to select the specific database if we are NOT on the setup page.
     if (basename($_SERVER['PHP_SELF']) !== 'setup.php') {
         $pdo->exec("USE `" . $config['db']['name'] . "`");
     }
