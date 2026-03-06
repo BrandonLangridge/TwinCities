@@ -1,33 +1,9 @@
--- ============================================================
--- news_table.sql
--- Run this in your city_twin_db to add the News table.
--- A News table earns top marks on the RSS feed criterion
--- (marker rubric: "Database includes a news table which is used
--- to generate the RSS feed. The RSS is complete and valid.")
--- ============================================================
 
 USE city_twin_db;
 
--- Table: News
-CREATE TABLE IF NOT EXISTS News (
-    news_id      INT AUTO_INCREMENT PRIMARY KEY,
-    headline     VARCHAR(255) NOT NULL,
-    body         TEXT NOT NULL,
-    published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    city_id      INT NOT NULL,
-    CONSTRAINT fk_news_city
-        FOREIGN KEY (city_id)
-        REFERENCES Cities(city_id)
-        ON DELETE CASCADE
-) ENGINE=InnoDB;
+-- SAMPLE DATA 
 
-
--- ---------------------------------------------------------------
--- SAMPLE DATA  (adjust city_id values to match your Cities table)
--- Run: SELECT city_id, name FROM Cities;  to check IDs first.
--- ---------------------------------------------------------------
-
--- Liverpool news (assuming city_id = 1)
+-- Liverpool news
 INSERT INTO News (headline, body, published_at, city_id) VALUES
 (
     'Liverpool Waterfront Awarded UNESCO Heritage Status',
@@ -56,7 +32,7 @@ INSERT INTO News (headline, body, published_at, city_id) VALUES
     1
 );
 
--- Cologne news (assuming city_id = 2)
+-- Cologne news 
 INSERT INTO News (headline, body, published_at, city_id) VALUES
 (
     'Cologne Cathedral Restoration Project Nears Completion',
@@ -84,3 +60,4 @@ INSERT INTO News (headline, body, published_at, city_id) VALUES
     '2025-11-18 16:00:00',
     2
 );
+
