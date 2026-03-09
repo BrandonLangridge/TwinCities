@@ -1,5 +1,5 @@
 
-FILE: ...\Downloads\TwinCities-main(1)\TwinCities-main\comments_logic.php
+FILE: comments_logic.php
 ----------------------------------------------------------------------
 FOUND 5 ERRORS AND 2 WARNINGS AFFECTING 6 LINES
 ----------------------------------------------------------------------
@@ -21,7 +21,7 @@ PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...rs\alien\Downloads\TwinCities-main(1)\TwinCities-main\config.php
+FILE: config.php
 ----------------------------------------------------------------------
 FOUND 2 ERRORS AND 4 WARNINGS AFFECTING 6 LINES
 ----------------------------------------------------------------------
@@ -41,7 +41,7 @@ PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...s\alien\Downloads\TwinCities-main(1)\TwinCities-main\details.php
+FILE: details.php
 ----------------------------------------------------------------------
 FOUND 2 ERRORS AND 13 WARNINGS AFFECTING 15 LINES
 ----------------------------------------------------------------------
@@ -81,7 +81,7 @@ PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...ers\alien\Downloads\TwinCities-main(1)\TwinCities-main\index.php
+FILE: index.php
 ----------------------------------------------------------------------
 FOUND 6 ERRORS AND 8 WARNINGS AFFECTING 14 LINES
 ----------------------------------------------------------------------
@@ -119,7 +119,7 @@ PHPCBF CAN FIX THE 5 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...Users\alien\Downloads\TwinCities-main(1)\TwinCities-main\maps.js
+FILE: maps.js
 ----------------------------------------------------------------------
 FOUND 80 ERRORS AFFECTING 50 LINES
 ----------------------------------------------------------------------
@@ -286,7 +286,7 @@ PHPCBF CAN FIX THE 80 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...sers\alien\Downloads\TwinCities-main(1)\TwinCities-main\maps.php
+FILE: maps.php
 ----------------------------------------------------------------------
 FOUND 20 ERRORS AND 12 WARNINGS AFFECTING 26 LINES
 ----------------------------------------------------------------------
@@ -365,7 +365,7 @@ PHPCBF CAN FIX THE 20 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...en\Downloads\TwinCities-main(1)\TwinCities-main\photo_widget.css
+FILE: photo_widget.css
 ----------------------------------------------------------------------
 FOUND 1 ERROR AFFECTING 1 LINE
 ----------------------------------------------------------------------
@@ -376,7 +376,7 @@ PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...en\Downloads\TwinCities-main(1)\TwinCities-main\photo_widget.php
+FILE: photo_widget.php
 ----------------------------------------------------------------------
 FOUND 14 ERRORS AND 15 WARNINGS AFFECTING 24 LINES
 ----------------------------------------------------------------------
@@ -448,7 +448,7 @@ PHPCBF CAN FIX THE 16 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...ers\alien\Downloads\TwinCities-main(1)\TwinCities-main\place.php
+FILE: place.php
 ----------------------------------------------------------------------
 FOUND 11 ERRORS AND 11 WARNINGS AFFECTING 17 LINES
 ----------------------------------------------------------------------
@@ -509,7 +509,7 @@ PHPCBF CAN FIX THE 10 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...Users\alien\Downloads\TwinCities-main(1)\TwinCities-main\pois.js
+FILE: pois.js
 ----------------------------------------------------------------------
 FOUND 145 ERRORS AFFECTING 145 LINES
 ----------------------------------------------------------------------
@@ -808,7 +808,7 @@ PHPCBF CAN FIX THE 145 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...\alien\Downloads\TwinCities-main(1)\TwinCities-main\rss_feed.php
+FILE: rss_feed.php
 ----------------------------------------------------------------------
 FOUND 58 ERRORS AND 17 WARNINGS AFFECTING 56 LINES
 ----------------------------------------------------------------------
@@ -1008,7 +1008,7 @@ PHPCBF CAN FIX THE 56 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...\alien\Downloads\TwinCities-main(1)\TwinCities-main\rss_view.php
+FILE: rss_view.php
 ----------------------------------------------------------------------
 FOUND 42 ERRORS AND 23 WARNINGS AFFECTING 55 LINES
 ----------------------------------------------------------------------
@@ -1173,7 +1173,7 @@ PHPCBF CAN FIX THE 41 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 
-FILE: ...ers\alien\Downloads\TwinCities-main(1)\TwinCities-main\setup.php
+FILE: setup.php
 ----------------------------------------------------------------------
 FOUND 1 ERROR AND 9 WARNINGS AFFECTING 10 LINES
 ----------------------------------------------------------------------
@@ -1190,7 +1190,7 @@ FOUND 1 ERROR AND 9 WARNINGS AFFECTING 10 LINES
 ----------------------------------------------------------------------
 
 
-FILE: ...\Downloads\TwinCities-main(1)\TwinCities-main\weather_widget.php
+FILE: weather_widget.php
 ----------------------------------------------------------------------
 FOUND 20 ERRORS AND 14 WARNINGS AFFECTING 21 LINES
 ----------------------------------------------------------------------
@@ -1277,4 +1277,5 @@ PHPCBF CAN FIX THE 18 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ----------------------------------------------------------------------
 
 Time: 219ms; Memory: 8MB
+
 
