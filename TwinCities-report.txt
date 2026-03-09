@@ -1,0 +1,1280 @@
+
+FILE: ...\Downloads\TwinCities-main(1)\TwinCities-main\comments_logic.php
+----------------------------------------------------------------------
+FOUND 5 ERRORS AND 2 WARNINGS AFFECTING 6 LINES
+----------------------------------------------------------------------
+  2 | ERROR   | [ ] You must use "/**" style comments for a file
+    |         |     comment
+  9 | WARNING | [ ] Line exceeds 85 characters; contains 87
+    |         |     characters
+ 16 | ERROR   | [ ] You must use "/**" style comments for a function
+    |         |     comment
+ 16 | ERROR   | [x] Opening brace should be on a new line
+ 30 | ERROR   | [x] Opening parenthesis of a multi-line function call
+    |         |     must be the last content on the line
+ 32 | ERROR   | [x] Closing parenthesis of a multi-line function call
+    |         |     must be on a line by itself
+ 57 | WARNING | [ ] Line exceeds 85 characters; contains 127
+    |         |     characters
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...rs\alien\Downloads\TwinCities-main(1)\TwinCities-main\config.php
+----------------------------------------------------------------------
+FOUND 2 ERRORS AND 4 WARNINGS AFFECTING 6 LINES
+----------------------------------------------------------------------
+  1 | ERROR   | [x] End of line character is invalid; expected "\n"
+    |         |     but found "\r\n"
+  2 | ERROR   | [ ] You must use "/**" style comments for a file
+    |         |     comment
+  9 | WARNING | [ ] Line exceeds 85 characters; contains 90
+    |         |     characters
+ 12 | WARNING | [x] Inline control structures are discouraged
+ 45 | WARNING | [ ] Line exceeds 85 characters; contains 91
+    |         |     characters
+ 55 | WARNING | [ ] Line exceeds 85 characters; contains 90
+    |         |     characters
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...s\alien\Downloads\TwinCities-main(1)\TwinCities-main\details.php
+----------------------------------------------------------------------
+FOUND 2 ERRORS AND 13 WARNINGS AFFECTING 15 LINES
+----------------------------------------------------------------------
+   2 | ERROR   | [ ] You must use "/**" style comments for a file
+     |         |     comment
+   5 | WARNING | [ ] Line exceeds 85 characters; contains 104
+     |         |     characters
+  12 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo $poiTitle ..." but found "<?=
+     |         |     $poiTitle ..."
+  19 | WARNING | [ ] Line exceeds 85 characters; contains 116
+     |         |     characters
+  32 | WARNING | [ ] Line exceeds 85 characters; contains 91
+     |         |     characters
+  40 | WARNING | [ ] Line exceeds 85 characters; contains 162
+     |         |     characters
+  41 | WARNING | [ ] Line exceeds 85 characters; contains 156
+     |         |     characters
+  42 | WARNING | [ ] Line exceeds 85 characters; contains 160
+     |         |     characters
+  79 | WARNING | [ ] Line exceeds 85 characters; contains 111
+     |         |     characters
+  86 | WARNING | [ ] Line exceeds 85 characters; contains 118
+     |         |     characters
+  92 | WARNING | [ ] Line exceeds 85 characters; contains 112
+     |         |     characters
+  94 | WARNING | [ ] Line exceeds 85 characters; contains 140
+     |         |     characters
+  99 | WARNING | [ ] Line exceeds 85 characters; contains 88
+     |         |     characters
+ 100 | WARNING | [ ] Line exceeds 85 characters; contains 97
+     |         |     characters
+ 109 | WARNING | [ ] Line exceeds 85 characters; contains 201
+     |         |     characters
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...ers\alien\Downloads\TwinCities-main(1)\TwinCities-main\index.php
+----------------------------------------------------------------------
+FOUND 6 ERRORS AND 8 WARNINGS AFFECTING 14 LINES
+----------------------------------------------------------------------
+   1 | ERROR   | [ ] You must use "/**" style comments for a file
+     |         |     comment
+   6 | ERROR   | [x] File is being conditionally included; use
+     |         |     "include" instead
+  10 | ERROR   | [x] Line indented incorrectly; expected 0 spaces,
+     |         |     found 2
+  12 | ERROR   | [x] Line indented incorrectly; expected 0 spaces,
+     |         |     found 2
+  17 | ERROR   | [x] Line indented incorrectly; expected 0 spaces,
+     |         |     found 2
+  24 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+  48 | WARNING | [ ] Line exceeds 85 characters; contains 100
+     |         |     characters
+  68 | WARNING | [ ] Line exceeds 85 characters; contains 88
+     |         |     characters
+  73 | WARNING | [ ] Line exceeds 85 characters; contains 131
+     |         |     characters
+  76 | WARNING | [ ] Line exceeds 85 characters; contains 123
+     |         |     characters
+  79 | WARNING | [ ] Line exceeds 85 characters; contains 129
+     |         |     characters
+ 108 | WARNING | [ ] Line exceeds 85 characters; contains 108
+     |         |     characters
+ 116 | WARNING | [ ] Line exceeds 85 characters; contains 90
+     |         |     characters
+ 136 | WARNING | [ ] Line exceeds 85 characters; contains 102
+     |         |     characters
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 5 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...Users\alien\Downloads\TwinCities-main(1)\TwinCities-main\maps.js
+----------------------------------------------------------------------
+FOUND 80 ERRORS AFFECTING 50 LINES
+----------------------------------------------------------------------
+ 10 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 11 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 16 | ERROR | [x] Line indented incorrectly; expected at least 4
+    |       |     spaces, found 2
+ 17 | ERROR | [x] Line indented incorrectly; expected at least 4
+    |       |     spaces, found 2
+ 23 | ERROR | [x] Opening parenthesis of a multi-line function call
+    |       |     must be the last content on the line
+ 24 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 4 spaces but found 2
+ 24 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 25 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 4 spaces but found 2
+ 25 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 26 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 4 spaces but found 2
+ 26 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 27 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 4 spaces but found 2
+ 27 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 28 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 4 spaces but found 2
+ 28 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 29 | ERROR | [x] Closing parenthesis of a multi-line function call
+    |       |     must be on a line by itself
+ 32 | ERROR | [x] Opening parenthesis of a multi-line function call
+    |       |     must be the last content on the line
+ 33 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 4 spaces but found 2
+ 33 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 34 | ERROR | [x] Closing parenthesis of a multi-line function call
+    |       |     must be on a line by itself
+ 39 | ERROR | [x] Line indented incorrectly; expected at least 4
+    |       |     spaces, found 2
+ 41 | ERROR | [x] Line indented incorrectly; expected at least 4
+    |       |     spaces, found 2
+ 43 | ERROR | [x] Opening parenthesis of a multi-line function call
+    |       |     must be the last content on the line
+ 44 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 44 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 45 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 45 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 46 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 46 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 47 | ERROR | [x] Empty lines are not allowed in multi-line function
+    |       |     calls
+ 48 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 48 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 49 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 49 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 57 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 57 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 58 | ERROR | [x] Empty lines are not allowed in multi-line function
+    |       |     calls
+ 59 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 59 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 60 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 60 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 60 | ERROR | [x] Opening statement of multi-line function call not
+    |       |     indented correctly; expected 4 spaces but found 6
+ 60 | ERROR | [x] Opening parenthesis of a multi-line function call
+    |       |     must be the last content on the line
+ 61 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 10 spaces but found 8
+ 61 | ERROR | [x] Line indented incorrectly; expected 12 spaces,
+    |       |     found 8
+ 62 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 10 spaces but found 8
+ 62 | ERROR | [x] Line indented incorrectly; expected 12 spaces,
+    |       |     found 8
+ 63 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 10 spaces but found 8
+ 63 | ERROR | [x] Line indented incorrectly; expected 12 spaces,
+    |       |     found 8
+ 64 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 64 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 64 | ERROR | [x] Closing parenthesis of a multi-line function call
+    |       |     must be on a line by itself
+ 65 | ERROR | [x] Empty lines are not allowed in multi-line function
+    |       |     calls
+ 66 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 67 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 68 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 68 | ERROR | [x] Opening statement of multi-line function call not
+    |       |     indented correctly; expected 4 spaces but found 6
+ 68 | ERROR | [x] Opening parenthesis of a multi-line function call
+    |       |     must be the last content on the line
+ 69 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 10 spaces but found 8
+ 69 | ERROR | [x] Line indented incorrectly; expected at least 12
+    |       |     spaces, found 8
+ 70 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 10 spaces but found 8
+ 70 | ERROR | [x] Line indented incorrectly; expected at least 12
+    |       |     spaces, found 8
+ 71 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 10 spaces but found 8
+ 71 | ERROR | [x] Line indented incorrectly; expected at least 12
+    |       |     spaces, found 8
+ 72 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 72 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 72 | ERROR | [x] Closing parenthesis of a multi-line function call
+    |       |     must be on a line by itself
+ 73 | ERROR | [x] Closing parenthesis of a multi-line function call
+    |       |     must be on a line by itself
+ 75 | ERROR | [x] Line indented incorrectly; expected at least 4
+    |       |     spaces, found 2
+ 76 | ERROR | [x] Line indented incorrectly; expected at least 4
+    |       |     spaces, found 2
+ 77 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 78 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 4
+ 79 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 4
+ 80 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 86 | ERROR | [x] Opening parenthesis of a multi-line function call
+    |       |     must be the last content on the line
+ 86 | ERROR | [x] Expected 1 space after FUNCTION keyword; 0 found
+ 89 | ERROR | [x] Opening parenthesis of a multi-line function call
+    |       |     must be the last content on the line
+ 89 | ERROR | [x] Expected 1 space after FUNCTION keyword; 0 found
+ 93 | ERROR | [x] Closing parenthesis of a multi-line function call
+    |       |     must be on a line by itself
+ 97 | ERROR | [x] Closing parenthesis of a multi-line function call
+    |       |     must be on a line by itself
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 80 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...sers\alien\Downloads\TwinCities-main(1)\TwinCities-main\maps.php
+----------------------------------------------------------------------
+FOUND 20 ERRORS AND 12 WARNINGS AFFECTING 26 LINES
+----------------------------------------------------------------------
+   2 | ERROR   | [ ] You must use "/**" style comments for a file
+     |         |     comment
+   6 | ERROR   | [x] File is being conditionally included; use
+     |         |     "include_once" instead
+  15 | WARNING | [x] Inline control structures are discouraged
+  38 | ERROR   | [x] File is being conditionally included; use
+     |         |     "include_once" instead
+  47 | WARNING | [ ] Line exceeds 85 characters; contains 132
+     |         |     characters
+  78 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+  89 | WARNING | [ ] Line exceeds 85 characters; contains 106
+     |         |     characters
+  90 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 107 | ERROR   | [x] Line indented incorrectly; expected 4 spaces,
+     |         |     found 6
+ 108 | ERROR   | [x] Opening statement of multi-line function call
+     |         |     not indented correctly; expected 8 spaces but
+     |         |     found 10
+ 116 | ERROR   | [x] Line indented incorrectly; expected 4 spaces,
+     |         |     found 6
+ 122 | ERROR   | [x] File is being unconditionally included; use
+     |         |     "require" instead
+ 123 | ERROR   | [x] Line indented incorrectly; expected 0 spaces,
+     |         |     found 2
+ 130 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo (int) ..." but found "<?= (int) ..."
+ 130 | WARNING | [ ] Line exceeds 85 characters; contains 86
+     |         |     characters
+ 132 | WARNING | [ ] Line exceeds 85 characters; contains 110
+     |         |     characters
+ 133 | WARNING | [ ] Line exceeds 85 characters; contains 101
+     |         |     characters
+ 138 | ERROR   | [x] Line indented incorrectly; expected at least 16
+     |         |     spaces, found 14
+ 139 | ERROR   | [x] Line indented incorrectly; expected 16 spaces,
+     |         |     found 14
+ 139 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 140 | ERROR   | [x] Line indented incorrectly; expected 20 spaces,
+     |         |     found 18
+ 144 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 144 | WARNING | [ ] Line exceeds 85 characters; contains 92
+     |         |     characters
+ 145 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo date ..." but found "<?= date ..."
+ 145 | WARNING | [ ] Line exceeds 85 characters; contains 99
+     |         |     characters
+ 147 | WARNING | [ ] Line exceeds 85 characters; contains 102
+     |         |     characters
+ 148 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo $c ..." but found "<?= $c ..."
+ 148 | WARNING | [ ] Line exceeds 85 characters; contains 106
+     |         |     characters
+ 149 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo $currentCityId ..." but found "<?=
+     |         |     $currentCityId ..."
+ 149 | WARNING | [ ] Line exceeds 85 characters; contains 101
+     |         |     characters
+ 150 | WARNING | [ ] Line exceeds 85 characters; contains 113
+     |         |     characters
+ 153 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 20 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...en\Downloads\TwinCities-main(1)\TwinCities-main\photo_widget.css
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but
+   |       |     found "\r\n"
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...en\Downloads\TwinCities-main(1)\TwinCities-main\photo_widget.php
+----------------------------------------------------------------------
+FOUND 14 ERRORS AND 15 WARNINGS AFFECTING 24 LINES
+----------------------------------------------------------------------
+   1 | ERROR   | [x] End of line character is invalid; expected "\n"
+     |         |     but found "\r\n"
+   2 | ERROR   | [ ] You must use "/**" style comments for a file
+     |         |     comment
+   5 | ERROR   | [x] File is being conditionally included; use
+     |         |     "include" instead
+  34 | WARNING | [x] Inline control structures are discouraged
+  37 | WARNING | [ ] Line exceeds 85 characters; contains 124
+     |         |     characters
+  50 | WARNING | [x] Inline control structures are discouraged
+  59 | WARNING | [ ] Line exceeds 85 characters; contains 132
+     |         |     characters
+  67 | WARNING | [ ] Line exceeds 85 characters; contains 127
+     |         |     characters
+  74 | WARNING | [ ] Line exceeds 85 characters; contains 123
+     |         |     characters
+  75 | WARNING | [ ] Line exceeds 85 characters; contains 99
+     |         |     characters
+  76 | WARNING | [ ] Line exceeds 85 characters; contains 105
+     |         |     characters
+  77 | WARNING | [x] Inline control structures are discouraged
+  94 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 109 | ERROR   | [x] Line indented incorrectly; expected 4 spaces,
+     |         |     found 0
+ 112 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 112 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo $prev_class ..." but found "<?=
+     |         |     $prev_class ..."
+ 112 | WARNING | [ ] Line exceeds 85 characters; contains 88
+     |         |     characters
+ 115 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 116 | WARNING | [ ] Line exceeds 85 characters; contains 100
+     |         |     characters
+ 117 | WARNING | [ ] Line exceeds 85 characters; contains 122
+     |         |     characters
+ 118 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo $id ..." but found "<?= $id ..."
+ 121 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo $page ..." but found "<?= $page ..."
+ 123 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 130 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 130 | WARNING | [ ] Line exceeds 85 characters; contains 89
+     |         |     characters
+ 135 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 135 | WARNING | [ ] Line exceeds 85 characters; contains 121
+     |         |     characters
+ 136 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 136 | WARNING | [ ] Line exceeds 85 characters; contains 105
+     |         |     characters
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 16 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...ers\alien\Downloads\TwinCities-main(1)\TwinCities-main\place.php
+----------------------------------------------------------------------
+FOUND 11 ERRORS AND 11 WARNINGS AFFECTING 17 LINES
+----------------------------------------------------------------------
+  1 | ERROR   | [x] End of line character is invalid; expected "\n"
+    |         |     but found "\r\n"
+  2 | ERROR   | [ ] You must use "/**" style comments for a file
+    |         |     comment
+ 10 | WARNING | [ ] Line exceeds 85 characters; contains 87
+    |         |     characters
+ 53 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 56 | WARNING | [ ] Line exceeds 85 characters; contains 95
+    |         |     characters
+ 57 | WARNING | [ ] Line exceeds 85 characters; contains 104
+    |         |     characters
+ 58 | WARNING | [ ] Line exceeds 85 characters; contains 134
+    |         |     characters
+ 60 | WARNING | [ ] Line exceeds 85 characters; contains 111
+    |         |     characters
+ 61 | WARNING | [ ] Line exceeds 85 characters; contains 137
+    |         |     characters
+ 62 | WARNING | [ ] Line exceeds 85 characters; contains 96
+    |         |     characters
+ 70 | WARNING | [ ] Line exceeds 85 characters; contains 174
+    |         |     characters
+ 77 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 78 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 78 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 78 | WARNING | [ ] Line exceeds 85 characters; contains 100
+    |         |     characters
+ 81 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 83 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo nl2br ..." but found "<?= nl2br ..."
+ 83 | WARNING | [ ] Line exceeds 85 characters; contains 107
+    |         |     characters
+ 88 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 92 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 92 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 92 | WARNING | [ ] Line exceeds 85 characters; contains 103
+    |         |     characters
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 10 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...Users\alien\Downloads\TwinCities-main(1)\TwinCities-main\pois.js
+----------------------------------------------------------------------
+FOUND 145 ERRORS AFFECTING 145 LINES
+----------------------------------------------------------------------
+   6 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+   7 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+   8 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+   9 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  10 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  11 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  12 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  13 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  14 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  15 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  16 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  17 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  18 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  19 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  20 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  21 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  22 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  23 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  24 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  25 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  26 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  27 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  28 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  29 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  30 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  31 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  32 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  33 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  34 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  35 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  36 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  37 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  38 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  39 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  40 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  41 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  42 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  43 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  44 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  45 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  46 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  47 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  48 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  49 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  50 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  51 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  52 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  53 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  54 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  55 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  56 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  57 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  58 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  59 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  60 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  61 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  62 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  63 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  64 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  65 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  66 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  67 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  68 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  69 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  70 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  71 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  72 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  73 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  74 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  75 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  76 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  78 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 0
+  80 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  81 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  82 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  83 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  84 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  85 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  86 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  87 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  88 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  89 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  90 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  91 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  92 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  93 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  94 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  95 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  96 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  97 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  98 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  99 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 100 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 101 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 102 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 103 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 104 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 105 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 106 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 107 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 108 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 109 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 110 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 111 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 112 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 113 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 114 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 115 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 116 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 117 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 118 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 119 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 120 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 121 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 122 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 123 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 124 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 125 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 126 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 127 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 128 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 129 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 130 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 131 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 132 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 133 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 134 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 135 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 136 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 137 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 138 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 139 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 140 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 141 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 142 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 143 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 144 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 145 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 146 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 147 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 148 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 149 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 150 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 151 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 152 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 0
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 145 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...\alien\Downloads\TwinCities-main(1)\TwinCities-main\rss_feed.php
+----------------------------------------------------------------------
+FOUND 58 ERRORS AND 17 WARNINGS AFFECTING 56 LINES
+----------------------------------------------------------------------
+   1 | ERROR   | [x] End of line character is invalid; expected "\n"
+     |         |     but found "\r\n"
+   2 | ERROR   | [ ] You must use "/**" style comments for a file
+     |         |     comment
+  14 | ERROR   | [x] File is being conditionally included; use
+     |         |     "include_once" instead
+  27 | ERROR   | [ ] You must use "/**" style comments for a function
+     |         |     comment
+  27 | ERROR   | [x] Opening brace should be on a new line
+  31 | WARNING | [ ] Line exceeds 85 characters; contains 92
+     |         |     characters
+  34 | ERROR   | [ ] You must use "/**" style comments for a function
+     |         |     comment
+  34 | ERROR   | [x] Opening brace should be on a new line
+  35 | WARNING | [x] Inline control structures are discouraged
+  49 | ERROR   | [x] Opening parenthesis of a multi-line function
+     |         |     call must be the last content on the line
+  54 | ERROR   | [x] Closing parenthesis of a multi-line function
+     |         |     call must be on a line by itself
+  61 | ERROR   | [x] Opening parenthesis of a multi-line function
+     |         |     call must be the last content on the line
+  69 | ERROR   | [x] Closing parenthesis of a multi-line function
+     |         |     call must be on a line by itself
+  77 | ERROR   | [x] Opening parenthesis of a multi-line function
+     |         |     call must be the last content on the line
+  84 | ERROR   | [x] Closing parenthesis of a multi-line function
+     |         |     call must be on a line by itself
+  98 | WARNING | [ ] Line exceeds 85 characters; contains 90
+     |         |     characters
+ 132 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 133 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 134 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 137 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo date ..." but found "<?= date ..."
+ 142 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 153 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 153 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 153 | WARNING | [ ] Line exceeds 85 characters; contains 94
+     |         |     characters
+ 155 | WARNING | [ ] Line exceeds 85 characters; contains 91
+     |         |     characters
+ 156 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 156 | WARNING | [ ] Line exceeds 85 characters; contains 96
+     |         |     characters
+ 159 | WARNING | [ ] Line exceeds 85 characters; contains 96
+     |         |     characters
+ 160 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 160 | WARNING | [ ] Line exceeds 85 characters; contains 115
+     |         |     characters
+ 165 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 166 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 168 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo number_format ..." but found "<?=
+     |         |     number_format ..."
+ 168 | WARNING | [ ] Line exceeds 85 characters; contains 94
+     |         |     characters
+ 169 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 169 | WARNING | [ ] Line exceeds 85 characters; contains 88
+     |         |     characters
+ 170 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 170 | WARNING | [ ] Line exceeds 85 characters; contains 87
+     |         |     characters
+ 171 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 173 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 174 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 181 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 182 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 197 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 197 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 197 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 197 | WARNING | [ ] Line exceeds 85 characters; contains 122
+     |         |     characters
+ 199 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 199 | WARNING | [ ] Line exceeds 85 characters; contains 93
+     |         |     characters
+ 200 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 200 | WARNING | [ ] Line exceeds 85 characters; contains 112
+     |         |     characters
+ 203 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 204 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 205 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 205 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 205 | WARNING | [ ] Line exceeds 85 characters; contains 97
+     |         |     characters
+ 207 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 208 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo number_format ..." but found "<?=
+     |         |     number_format ..."
+ 208 | WARNING | [ ] Line exceeds 85 characters; contains 87
+     |         |     characters
+ 211 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 212 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 215 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 216 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 220 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 221 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 222 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 223 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 237 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 237 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 237 | WARNING | [ ] Line exceeds 85 characters; contains 95
+     |         |     characters
+ 238 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 241 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+ 244 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo rssDate ..." but found "<?= rssDate
+     |         |     ..."
+ 246 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 247 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo xmlEscape ..." but found "<?=
+     |         |     xmlEscape ..."
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 56 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...\alien\Downloads\TwinCities-main(1)\TwinCities-main\rss_view.php
+----------------------------------------------------------------------
+FOUND 42 ERRORS AND 23 WARNINGS AFFECTING 55 LINES
+----------------------------------------------------------------------
+   1 | ERROR   | [x] End of line character is invalid; expected "\n"
+     |         |     but found "\r\n"
+   2 | ERROR   | [ ] You must use "/**" style comments for a file
+     |         |     comment
+  12 | ERROR   | [x] File is being conditionally included; use
+     |         |     "include_once" instead
+  18 | ERROR   | [x] Opening parenthesis of a multi-line function
+     |         |     call must be the last content on the line
+  19 | WARNING | [ ] Line exceeds 85 characters; contains 89
+     |         |     characters
+  21 | ERROR   | [x] Closing parenthesis of a multi-line function
+     |         |     call must be on a line by itself
+  26 | ERROR   | [x] Opening parenthesis of a multi-line function
+     |         |     call must be the last content on the line
+  33 | ERROR   | [x] Closing parenthesis of a multi-line function
+     |         |     call must be on a line by itself
+  40 | ERROR   | [x] Opening parenthesis of a multi-line function
+     |         |     call must be the last content on the line
+  46 | ERROR   | [x] Closing parenthesis of a multi-line function
+     |         |     call must be on a line by itself
+  47 | ERROR   | [x] Closing brace must be on a line by itself
+  85 | WARNING | [ ] Line exceeds 85 characters; contains 106
+     |         |     characters
+ 101 | WARNING | [ ] Line exceeds 85 characters; contains 162
+     |         |     characters
+ 104 | WARNING | [ ] Line exceeds 85 characters; contains 92
+     |         |     characters
+ 107 | WARNING | [ ] Line exceeds 85 characters; contains 210
+     |         |     characters
+ 113 | WARNING | [ ] Line exceeds 85 characters; contains 153
+     |         |     characters
+ 120 | WARNING | [ ] Line exceeds 85 characters; contains 142
+     |         |     characters
+ 132 | WARNING | [ ] Line exceeds 85 characters; contains 90
+     |         |     characters
+ 133 | WARNING | [ ] Line exceeds 85 characters; contains 89
+     |         |     characters
+ 136 | WARNING | [ ] Line exceeds 85 characters; contains 90
+     |         |     characters
+ 152 | WARNING | [ ] Line exceeds 85 characters; contains 100
+     |         |     characters
+ 169 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 178 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 178 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 178 | WARNING | [ ] Line exceeds 85 characters; contains 91
+     |         |     characters
+ 182 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 183 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 189 | WARNING | [ ] Line exceeds 85 characters; contains 102
+     |         |     characters
+ 192 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo number_format ..." but found "<?=
+     |         |     number_format ..."
+ 192 | WARNING | [ ] Line exceeds 85 characters; contains 87
+     |         |     characters
+ 197 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 203 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 203 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 203 | WARNING | [ ] Line exceeds 85 characters; contains 99
+     |         |     characters
+ 224 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 232 | ERROR   | [x] Line indented incorrectly; expected at least 8
+     |         |     spaces, found 6
+ 233 | ERROR   | [x] Line indented incorrectly; expected at least 8
+     |         |     spaces, found 6
+ 234 | ERROR   | [x] Line indented incorrectly; expected 8 spaces,
+     |         |     found 4
+ 238 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo $poiIcon ..." but found "<?=
+     |         |     $poiIcon ..."
+ 240 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo (int) ..." but found "<?= (int) ..."
+ 242 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 246 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 247 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 250 | WARNING | [ ] Line exceeds 85 characters; contains 86
+     |         |     characters
+ 251 | WARNING | [ ] Line exceeds 85 characters; contains 87
+     |         |     characters
+ 252 | WARNING | [ ] Line exceeds 85 characters; contains 102
+     |         |     characters
+ 256 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 256 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 256 | WARNING | [ ] Line exceeds 85 characters; contains 96
+     |         |     characters
+ 258 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 262 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo number_format ..." but found "<?=
+     |         |     number_format ..."
+ 270 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 270 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 270 | WARNING | [ ] Line exceeds 85 characters; contains 95
+     |         |     characters
+ 276 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo $poiIcon ..." but found "<?=
+     |         |     $poiIcon ..."
+ 277 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 295 | ERROR   | [x] There must be a single space between the closing
+     |         |     parenthesis and the opening brace of a
+     |         |     multi-line IF statement; found 0 spaces
+ 301 | ERROR   | [x] Line indented incorrectly; expected at least 8
+     |         |     spaces, found 6
+ 306 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 309 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 311 | WARNING | [ ] Line exceeds 85 characters; contains 87
+     |         |     characters
+ 315 | WARNING | [ ] Line exceeds 85 characters; contains 91
+     |         |     characters
+ 316 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+ 316 | WARNING | [ ] Line exceeds 85 characters; contains 86
+     |         |     characters
+ 320 | ERROR   | [x] Short PHP opening tag used with echo; expected
+     |         |     "<?php echo htmlspecialchars ..." but found "<?=
+     |         |     htmlspecialchars ..."
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 41 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...ers\alien\Downloads\TwinCities-main(1)\TwinCities-main\setup.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AND 9 WARNINGS AFFECTING 10 LINES
+----------------------------------------------------------------------
+   2 | ERROR   | You must use "/**" style comments for a file comment
+  18 | WARNING | Line exceeds 85 characters; contains 101 characters
+  42 | WARNING | Line exceeds 85 characters; contains 103 characters
+  55 | WARNING | Line exceeds 85 characters; contains 97 characters
+  72 | WARNING | Line exceeds 85 characters; contains 98 characters
+  80 | WARNING | Line exceeds 85 characters; contains 110 characters
+  81 | WARNING | Line exceeds 85 characters; contains 105 characters
+  82 | WARNING | Line exceeds 85 characters; contains 118 characters
+ 104 | WARNING | Line exceeds 85 characters; contains 107 characters
+ 116 | WARNING | Line exceeds 85 characters; contains 108 characters
+----------------------------------------------------------------------
+
+
+FILE: ...\Downloads\TwinCities-main(1)\TwinCities-main\weather_widget.php
+----------------------------------------------------------------------
+FOUND 20 ERRORS AND 14 WARNINGS AFFECTING 21 LINES
+----------------------------------------------------------------------
+  1 | ERROR   | [x] End of line character is invalid; expected "\n"
+    |         |     but found "\r\n"
+  2 | ERROR   | [ ] You must use "/**" style comments for a file
+    |         |     comment
+  6 | ERROR   | [ ] You must use "/**" style comments for a function
+    |         |     comment
+  6 | WARNING | [ ] Line exceeds 85 characters; contains 90
+    |         |     characters
+  6 | ERROR   | [x] Opening brace should be on a new line
+ 10 | WARNING | [ ] Line exceeds 85 characters; contains 102
+    |         |     characters
+ 17 | WARNING | [ ] Line exceeds 85 characters; contains 115
+    |         |     characters
+ 24 | WARNING | [ ] Line exceeds 85 characters; contains 96
+    |         |     characters
+ 40 | WARNING | [ ] Line exceeds 85 characters; contains 116
+    |         |     characters
+ 47 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 48 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 48 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo htmlspecialchars ..." but found "<?=
+    |         |     htmlspecialchars ..."
+ 48 | WARNING | [ ] Line exceeds 85 characters; contains 109
+    |         |     characters
+ 50 | ERROR   | [x] There must be a single space between the closing
+    |         |     parenthesis and the opening brace of a multi-line
+    |         |     IF statement; found 0 spaces
+ 50 | WARNING | [ ] Line exceeds 85 characters; contains 91
+    |         |     characters
+ 54 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo $current ..." but found "<?= $current
+    |         |     ..."
+ 54 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo ( ..." but found "<?= ( ..."
+ 54 | WARNING | [ ] Line exceeds 85 characters; contains 106
+    |         |     characters
+ 58 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo $current ..." but found "<?= $current
+    |         |     ..."
+ 62 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo $weatherCodes ..." but found "<?=
+    |         |     $weatherCodes ..."
+ 85 | ERROR   | [x] Line indented incorrectly; expected 24 spaces,
+    |         |     found 20
+ 87 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo $day ..." but found "<?= $day ..."
+ 88 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo number_format ..." but found "<?=
+    |         |     number_format ..."
+ 88 | WARNING | [ ] Line exceeds 85 characters; contains 112
+    |         |     characters
+ 89 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo number_format ..." but found "<?=
+    |         |     number_format ..."
+ 89 | WARNING | [ ] Line exceeds 85 characters; contains 111
+    |         |     characters
+ 90 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo $weatherCodes ..." but found "<?=
+    |         |     $weatherCodes ..."
+ 90 | WARNING | [ ] Line exceeds 85 characters; contains 116
+    |         |     characters
+ 91 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo number_format ..." but found "<?=
+    |         |     number_format ..."
+ 91 | WARNING | [ ] Line exceeds 85 characters; contains 115
+    |         |     characters
+ 92 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo date ..." but found "<?= date ..."
+ 92 | WARNING | [ ] Line exceeds 85 characters; contains 102
+    |         |     characters
+ 93 | ERROR   | [x] Short PHP opening tag used with echo; expected
+    |         |     "<?php echo date ..." but found "<?= date ..."
+ 93 | WARNING | [ ] Line exceeds 85 characters; contains 111
+    |         |     characters
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 18 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+Time: 219ms; Memory: 8MB
+
