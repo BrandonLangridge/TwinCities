@@ -1,0 +1,526 @@
+
+FILE: ...top\Twin_Cities_Project-main\Twin_Cities_Project-main\config.php
+----------------------------------------------------------------------
+FOUND 6 ERRORS AND 1 WARNING AFFECTING 5 LINES
+----------------------------------------------------------------------
+  1 | WARNING | [ ] A file should declare new symbols (classes,
+    |         |     functions, constants, etc.) and cause no other
+    |         |     side effects, or it should execute logic with
+    |         |     side effects, but should not do both. The first
+    |         |     symbol is defined on line 5 and the first side
+    |         |     effect is on line 8.
+  1 | ERROR   | [x] Header blocks must be separated by a single blank
+    |         |     line
+  1 | ERROR   | [x] End of line character is invalid; expected "\n"
+    |         |     but found "\r\n"
+  5 | ERROR   | [x] Opening brace should be on a new line
+ 16 | ERROR   | [x] Whitespace found at end of line
+ 29 | ERROR   | [x] Whitespace found at end of line
+ 32 | ERROR   | [x] Expected 1 newline at end of file; 0 found
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...Desktop\Twin_Cities_Project-main\Twin_Cities_Project-main\db.php
+----------------------------------------------------------------------
+FOUND 4 ERRORS AFFECTING 4 LINES
+----------------------------------------------------------------------
+  1 | ERROR | [x] End of line character is invalid; expected "\n" but
+    |       |     found "\r\n"
+  5 | ERROR | [x] Blank line found at start of control structure
+ 26 | ERROR | [x] Blank line found at end of control structure
+ 30 | ERROR | [x] Expected 1 newline at end of file; 0 found
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...ktop\Twin_Cities_Project-main\Twin_Cities_Project-main\index.php
+----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 1 | WARNING | No PHP code was found in this file and short open tags
+   |         | are not allowed by this install of PHP. This file may
+   |         | be using short open tags but PHP does not allow them.
+----------------------------------------------------------------------
+
+
+FILE: ...esktop\Twin_Cities_Project-main\Twin_Cities_Project-main\maps.js
+----------------------------------------------------------------------
+FOUND 71 ERRORS AFFECTING 35 LINES
+----------------------------------------------------------------------
+  7 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+  8 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found
+    |       |     4
+  9 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found
+    |       |     4
+ 10 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found
+    |       |     4
+ 11 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 12 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 13 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found
+    |       |     4
+ 14 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found
+    |       |     4
+ 15 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found
+    |       |     4
+ 16 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 20 | ERROR | [x] Line indented incorrectly; expected at least 4
+    |       |     spaces, found 2
+ 21 | ERROR | [x] Line indented incorrectly; expected at least 4
+    |       |     spaces, found 2
+ 32 | ERROR | [x] Line indented incorrectly; expected at least 4
+    |       |     spaces, found 2
+ 32 | ERROR | [x] Inline control structures are not allowed
+ 33 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 33 | ERROR | [x] Inline control structures are not allowed
+ 37 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 4 spaces but found 2
+ 38 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 4 spaces but found 2
+ 42 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found
+    |       |     2
+ 48 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 4
+ 51 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 4
+ 52 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 52 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 53 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 53 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 53 | ERROR | [x] Expected at least 1 space after "<"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space before ">"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space after ">"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space before "<"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space after "<"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space before "/"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space after "/"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space before ">"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space after ">"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space before "<"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space after "<"; 0 found
+ 53 | ERROR | [x] Expected at least 1 space before ">"; 0 found
+ 54 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 54 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found
+    |       |     6
+ 54 | ERROR | [x] Expected at least 1 space before "<"; 0 found
+ 54 | ERROR | [x] Expected at least 1 space after "<"; 0 found
+ 54 | ERROR | [x] Expected at least 1 space before ">"; 0 found
+ 55 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 55 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found
+    |       |     6
+ 55 | ERROR | [x] Expected at least 1 space before "<"; 0 found
+ 55 | ERROR | [x] Expected at least 1 space after "<"; 0 found
+ 55 | ERROR | [x] Expected at least 1 space before ">"; 0 found
+ 56 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 56 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found
+    |       |     6
+ 56 | ERROR | [x] Expected at least 1 space before "<"; 0 found
+ 56 | ERROR | [x] Expected at least 1 space after "<"; 0 found
+ 56 | ERROR | [x] Expected at least 1 space before ">"; 0 found
+ 57 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 57 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found
+    |       |     6
+ 58 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 58 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 59 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 59 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 60 | ERROR | [x] Line indented incorrectly; expected 12 spaces,
+    |       |     found 8
+ 61 | ERROR | [x] Line indented incorrectly; expected 12 spaces,
+    |       |     found 8
+ 62 | ERROR | [x] Line indented incorrectly; expected 12 spaces,
+    |       |     found 8
+ 63 | ERROR | [x] Multi-line function call not indented correctly;
+    |       |     expected 8 spaces but found 6
+ 63 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 68 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 72 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 77 | ERROR | [x] Line indented incorrectly; expected at least 8
+    |       |     spaces, found 6
+ 77 | ERROR | [x] Expected at least 1 space before "?"; 0 found
+ 77 | ERROR | [x] Expected at least 1 space after "?"; 0 found
+ 77 | ERROR | [x] Expected at least 1 space before "="; 0 found
+ 77 | ERROR | [x] Expected at least 1 space after "="; 0 found
+ 79 | ERROR | [x] Line indented incorrectly; expected at least 4
+    |       |     spaces, found 2
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 71 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...ktop\Twin_Cities_Project-main\Twin_Cities_Project-main\place.php
+----------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 2 LINES
+----------------------------------------------------------------------
+  1 | ERROR   | [x] Header blocks must be separated by a single blank
+    |         |     line
+  1 | ERROR   | [x] End of line character is invalid; expected "\n"
+    |         |     but found "\r\n"
+ 51 | WARNING | [ ] Line exceeds 120 characters; contains 137
+    |         |     characters
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...esktop\Twin_Cities_Project-main\Twin_Cities_Project-main\pois.js
+----------------------------------------------------------------------
+FOUND 134 ERRORS AFFECTING 134 LINES
+----------------------------------------------------------------------
+   2 | ERROR | [x] Whitespace found at end of line
+   6 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+   7 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+   8 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+   9 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  10 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  11 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  12 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  13 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  14 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  15 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  17 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  18 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  19 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  20 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  21 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  22 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  23 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  24 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  25 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  26 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  27 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  29 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  30 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  31 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  32 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  33 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  34 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  35 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  36 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  37 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  38 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  39 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  40 | ERROR | [x] Whitespace found at end of line
+  41 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  42 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  43 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  44 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  45 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  46 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  47 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  48 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  49 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  50 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  51 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  53 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  54 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  55 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  56 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  57 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  58 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  59 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  60 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  61 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  62 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  63 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  65 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  66 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  67 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  68 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  69 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  70 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  71 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  72 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  73 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  74 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  75 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  79 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  80 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  81 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  82 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  83 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  84 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  85 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  86 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  87 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  88 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  89 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  90 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+  91 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  92 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  93 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  94 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  95 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  96 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  97 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  98 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+  99 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 100 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 101 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 102 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 103 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 104 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 105 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 106 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 107 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 108 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 109 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 110 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 111 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 112 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 113 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 114 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 115 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 116 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 117 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 118 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 119 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 120 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 121 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 122 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 123 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 124 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 125 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 126 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 127 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 128 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 129 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 130 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 131 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 132 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 133 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 134 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 2
+ 135 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 136 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 137 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 138 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 139 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 140 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 141 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 142 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 143 | ERROR | [x] Line indented incorrectly; expected 8 spaces,
+     |       |     found 4
+ 144 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 0
+ 145 | ERROR | [x] Line indented incorrectly; expected at least 4
+     |       |     spaces, found 0
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 134 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...esktop\Twin_Cities_Project-main\Twin_Cities_Project-main\rss.php
+----------------------------------------------------------------------
+FOUND 4 ERRORS AND 1 WARNING AFFECTING 4 LINES
+----------------------------------------------------------------------
+  1 | WARNING | [ ] A file should declare new symbols (classes,
+    |         |     functions, constants, etc.) and cause no other
+    |         |     side effects, or it should execute logic with
+    |         |     side effects, but should not do both. The first
+    |         |     symbol is defined on line 13 and the first side
+    |         |     effect is on line 3.
+  1 | ERROR   | [x] End of line character is invalid; expected "\n"
+    |         |     but found "\r\n"
+ 13 | ERROR   | [x] Opening brace should be on a new line
+ 55 | ERROR   | [x] Expected 1 space(s) after closing parenthesis;
+    |         |     found 0
+ 64 | ERROR   | [x] Expected 1 space(s) after closing parenthesis;
+    |         |     found 0
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...p\Twin_Cities_Project-main\Twin_Cities_Project-main\rss_view.php
+----------------------------------------------------------------------
+FOUND 2 ERRORS AFFECTING 2 LINES
+----------------------------------------------------------------------
+  1 | ERROR | [x] End of line character is invalid; expected "\n" but
+    |       |     found "\r\n"
+ 51 | ERROR | [x] Expected 1 space(s) after closing parenthesis;
+    |       |     found 0
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ...top\Twin_Cities_Project-main\Twin_Cities_Project-main\styles.css
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 2 | ERROR | [x] Whitespace found at end of line
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: ..._Cities_Project-main\Twin_Cities_Project-main\weather_widget.php
+----------------------------------------------------------------------
+FOUND 7 ERRORS AND 1 WARNING AFFECTING 8 LINES
+----------------------------------------------------------------------
+   1 | ERROR   | [x] End of line character is invalid; expected "\n"
+     |         |     but found "\r\n"
+  66 | ERROR   | [x] Blank line found at start of control structure
+  68 | ERROR   | [x] Whitespace found at end of line
+  69 | ERROR   | [x] Whitespace found at end of line
+  75 | WARNING | [ ] Line exceeds 120 characters; contains 245
+     |         |     characters
+ 133 | ERROR   | [x] Blank line found at start of control structure
+ 152 | ERROR   | [x] Whitespace found at end of line
+ 155 | ERROR   | [x] Whitespace found at end of line
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 7 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
