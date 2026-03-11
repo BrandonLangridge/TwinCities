@@ -1,0 +1,24 @@
+PHPCBF RESULT SUMMARY
+----------------------------------------------------------------------
+FILE                                                  FIXED  REMAINING
+----------------------------------------------------------------------
+...winCities-main\TwinCities-main\comments_logic.php  19     2
+...esktop\TwinCities-main\TwinCities-main\config.php  17     0
+...sktop\TwinCities-main\TwinCities-main\details.php  1      5
+...Desktop\TwinCities-main\TwinCities-main\index.php  6      3
+...n\Desktop\TwinCities-main\TwinCities-main\maps.js  109    0
+...\Desktop\TwinCities-main\TwinCities-main\maps.php  26     1
+...\TwinCities-main\TwinCities-main\photo_widget.css  1      0
+...\TwinCities-main\TwinCities-main\photo_widget.php  25     6
+...Desktop\TwinCities-main\TwinCities-main\place.php  4      3
+...n\Desktop\TwinCities-main\TwinCities-main\pois.js  144    0
+...ktop\TwinCities-main\TwinCities-main\rss_feed.php  15     2
+...ktop\TwinCities-main\TwinCities-main\rss_view.php  16     4
+...Desktop\TwinCities-main\TwinCities-main\setup.php  7      0
+...esktop\TwinCities-main\TwinCities-main\styles.css  4      0
+...winCities-main\TwinCities-main\weather_widget.php  12     1
+----------------------------------------------------------------------
+A TOTAL OF 406 ERRORS WERE FIXED IN 15 FILES
+----------------------------------------------------------------------
+
+Time: 773ms; Memory: 10MB
