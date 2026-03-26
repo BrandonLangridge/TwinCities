@@ -65,17 +65,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
     $query   = $_POST['search_param'] ?? '';
 
     // this function will only proceed if the text and the comment have been provided
-    if ($cityId && !empty($comment)) {
-        try {
-            $stmt = $pdo->prepare("INSERT INTO Comments (user_name, comment_text, search_query, city_id) VALUES (?, ?, ?, ?)");
+if ($cityId && !empty($comment)) {
+    if (strlen($comment) > 2000) {
+        $url = preg_replace('/#.*$/', '', $_SERVER['HTTP_REFERER']);
+        $sep = (strpos($url, '?') !== false) ? '&' : '?';
+        header("Location: " . $url . $sep . "announce=error_too_long#comments-section");
+        exit;
+    }
+    try {
+        $stmt = $pdo->prepare("INSERT INTO Comments (user_name, comment_text, search_query, city_id) VALUES (?, ?, ?, ?)");
             $stmt->execute([$user, $comment, $query, $cityId]);
 
             // CACHE INVALIDATION 
 
             //remove cached comments for this city to make sure the new comment is shown on the next fetch
             unset($_SESSION['comment_cache'][$cityId]);
-            // redirets to the page where the comment was submitted
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            // redirects to the page where the comment was submitted, with anchor to comments section
+            $redirectUrl = $_SERVER['HTTP_REFERER'];
+            // Remove any existing anchor
+            $redirectUrl = preg_replace('/#.*$/', '', $redirectUrl);
+            // Add a page-load announce token so the page can speak after reload
+            if (strpos($redirectUrl, '?') !== false) {
+                $redirectUrl .= '&announce=post_comment';
+            } else {
+                $redirectUrl .= '?announce=post_comment';
+            }
+            // Add comments section anchor
+            $redirectUrl .= '#comments-section';
+            header("Location: " . $redirectUrl);
             exit;
         } catch (PDOException $e) {
             die("Error saving comment: " . $e->getMessage());
@@ -102,8 +119,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
 
             // removing the cached comments so that deletion is made to reflect
             unset($_SESSION['comment_cache'][$cityId]);
-            // redirect back to the referring page
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            // redirect back to the referring page, with anchor to comments section
+            $redirectUrl = $_SERVER['HTTP_REFERER'];
+            // Remove any existing anchor
+            $redirectUrl = preg_replace('/#.*$/', '', $redirectUrl);
+            // Add a page-load announce token so the page can speak after reload (comment removed)
+            if (strpos($redirectUrl, '?') !== false) {
+                $redirectUrl .= '&announce=comment_deleted';
+            } else {
+                $redirectUrl .= '?announce=comment_deleted';
+            }
+            // Add comments section anchor
+            $redirectUrl .= '#comments-section';
+            header("Location: " . $redirectUrl);
             exit;
         } catch (PDOException $e) {
             die("Error deleting comment: " . $e->getMessage());

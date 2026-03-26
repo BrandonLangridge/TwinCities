@@ -21,7 +21,7 @@ const activeCity = cities[cityKey];
 
 // MAP INITIALISATION
 const map = L.map("map", {
-  scrollWheelZoom: false,
+  scrollWheelZoom: true, 
   zoomControl: false,      
   doubleClickZoom: false,  
   touchZoom: false,        
@@ -34,18 +34,15 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 // POINTS OF INTEREST (POI) RENDERING
-// If the 'pois' global array exists, filter and display markers for the current city.
 if (typeof pois !== 'undefined') {
   const markerArray = []; 
 
   pois
-    .filter(poi => poi.town.toLowerCase() === cityKey) // Only show POIs for the active city
+    .filter(poi => poi.town.toLowerCase() === cityKey) 
     .forEach(poi => {
-      // Create a marker and add it to our tracking array for later auto-fitting
       const marker = L.marker([poi.lat, poi.lng]).addTo(map);
       markerArray.push(marker);
 
-      // Define the HTML structure for the hover tooltip
       const tooltipContent = `
         <div style="padding: 5px; min-width: 150px;">
           <strong style="color: #0b5fff;">${poi.name}</strong><br>
@@ -56,33 +53,68 @@ if (typeof pois !== 'undefined') {
         </div>
       `;
 
-      // Attach tooltip: 'sticky' follows the mouse, 'direction top' keeps it above the pin
       marker.bindTooltip(tooltipContent, { 
         direction: "top", 
         sticky: true,
         boundary: 'viewport' 
       });
 
-      //REDIRECT LOGIC
-      //Clicking a marker takes the user to a detailed view page.
       marker.on("click", () => {
-        // Formats name for Wikipedia-style URLs (e.g., "The Beatles Story" -> "The_Beatles_Story")
-        const wikiFormattedName = poi.name.replace(/\s+/g, '_');
-        window.location.href = `details.php?poi=${wikiFormattedName}`;
+        openPoiModal(poi);
       });
     });
 
-  // AUTO-FIT LOGIC
-  // Automatically adjusts the map zoom/position so all markers are visible at once.
   if (markerArray.length > 0) {
     const group = new L.featureGroup(markerArray);
     map.fitBounds(group.getBounds(), { padding: [50, 50] }); 
   }
 }
 
+// MODAL OPENING LOGIC
+async function openPoiModal(poi) {
+  const modal = document.getElementById("poiModal");
+  const modalBody = document.getElementById("poiModalBody");
+
+  modalBody.innerHTML = "<p>Loading details...</p>";
+  modal.style.display = "flex";
+
+  try {
+    // Hardening restored: encodeURIComponent ensures names with spaces/special chars don't break the URL
+    const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(poi.name)}`);
+    
+    if (!response.ok) throw new Error("Wikipedia data not found");
+    
+    const data = await response.json();
+
+    modalBody.innerHTML = `
+      <h2 style="margin:0 0 8px 0;">${data.title}</h2>
+      <button id="poiReadBtn" class="poi-read-btn" type="button">🔊 Read aloud</button>
+      ${data.thumbnail ? `<img src="${data.thumbnail.source}" style="max-width:100%; margin-bottom:12px;">` : ""}
+      <p id="poiExtract">${data.extract}</p>
+      <div style="font-size: 0.85em; color: #666; border-top: 1px solid #ddd; padding-top: 10px;">
+        <a href="${data.content_urls.desktop.page}" target="_blank" rel="noopener noreferrer">Read full article on Wikipedia →</a>
+      </div>
+    `;
+
+    document.getElementById('poiReadBtn').addEventListener('click', () => {
+      const text = data.title + '. ' + data.extract;
+      // Hardening restored: checking for browser support before calling speech API
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+      } else {
+        alert("Text-to-speech is not supported in this browser.");
+      }
+    });
+
+  } catch (error) {
+    // Hardening restored: simple error fallback if fetch fails
+    modalBody.innerHTML = `<h2>${poi.name}</h2><p>Could not load details from Wikipedia at this time.</p>`;
+    console.error("Wiki Fetch Error:", error);
+  }
+}
+
 // LIFECYCLE & RESET LOGIC
-//Fixes "zombie" states (like open tooltips or grey map tiles) 
-//when the user clicks the 'Back' button in their browser.
 window.addEventListener('pageshow', function(event) {
     if (map) {
         map.closePopup();
@@ -91,14 +123,6 @@ window.addEventListener('pageshow', function(event) {
                 layer.closeTooltip();
             }
         });
-        // Forces Leaflet to recalculate the container size to prevent rendering glitches
         map.invalidateSize();
     }
 });
-
-
-
-
-
-
-

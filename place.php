@@ -51,7 +51,7 @@ if (!$place) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= htmlspecialchars($place["place_name"]) ?> | Details</title>
-  <link rel="stylesheet" href="styles.css">
+
   <style>
     .container { max-width: 800px; margin: 40px auto; padding: 20px; font-family: sans-serif; }
     .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -99,7 +99,8 @@ if (!$place) {
 
   <script>
     /* PERSISTENT ACCESSIBILITY */
-    let colorBlindEnabled = localStorage.getItem("colorBlindEnabled") === "true";
+    let colorBlindEnabled = false;
+    try { colorBlindEnabled = localStorage.getItem("colorBlindEnabled") === "true"; } catch (e) { colorBlindEnabled = false; }
     if (colorBlindEnabled) { document.body.classList.add("colorblind"); }
   </script>
 </body>

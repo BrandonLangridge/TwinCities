@@ -1,0 +1,98 @@
+-------------Changes made-------------
+
+Everything on one page, per Prakash request
+File restructure
+API photos now load more consistently
+RSS filtered by cities
+Very poor mobile screen provisions removed entirely (this version is not for mobiles)
+Access to the config by users is now forbidden (via .htaccess file)
+We use 'define' to implement constants where appropriate (the config)
+Error handling implemented including 404 page
+Uploaded pics now use the database to store their links
+API calls for weather and pictures now fail gracefully
+Comments and commenter names can't be infinitely long
+Pictures have max file size
+Photo widget now cleans outdated database entries
+Various previous sources of data now done by setup.php
+Added favicon (yay!)
+
+-------------Changes needed-------------
+
+ER diagrams must match the current database
+
+
+-------------Other jobs to do-------------
+
+Draft a scripted path for the demo that includes everything we want to show Prakash.
+Take backup screenshots of anything that relies on API call success.
+
+-------------List of files, changes, and who is their primary creator-------------
+
+
+comments_logic - Brandon - this file remained largely in tact with several minor additions
+
+Character Limit: A check to see if the comment exceeds 2000 characters.
+Error Redirect: A new header location for comments that are too long.
+Error Token: The announce=error_too_long parameter added to the URL.
+Anchor Removal: preg_replace('/#.*$/', '', ...) to strip old # anchors from the URL before redirecting.
+Separator Logic: A strpos check to decide whether to append new parameters with ? or &.
+Success Tokens: Added announce=post_comment for new posts and announce=comment_deleted for removals.
+Page Anchors: Added #comments-section to every redirect to ensure the page scrolls to the right spot.
+
+--------------------------------------------
+
+maps.js - Brandon
+
+A new openPoiModal function was added to fetch and display data without leaving the page.
+fetch request to the Wikipedia API using the POI name.
+"Read aloud" button was implemented to trigger the browser's text-to-speech functionality.
+
+---------------------------------------------------------------------------
+
+maps.php - Brandon (there's little in this now as it's no longer the main page and map functionality comes from the .js)
+
+-----------------------------------------
+
+place.php - largely unedited - (I believe this is map functionality??? Brandon???)
+
+-------------------------------------------------
+ 
+config - all of us - (Graham happy to comment)
+
+A global exception handler was added to log errors and display a stylized error page
+Database and API settings were moved into defined constants
+
+------------------------------------------------
+
+index.php - Graham
+
+complete overhaul
+list of its primary functions beyond the obvious
+
+runs a "Gatekeeper" check to ensure the database is connected before trying to load the page
+processes POST requests for new photo uploads, including file size and type validation.
+changes the entire layout of the page by applying different CSS classes depending on your selections
+embeds a hidden "Live Region" to allow screen readers and voice engines to announce updates
+handles text-to-speech feedback for accessibility.
+
+-------------------------------------
+
+setup.php - Graham
+
+---------------------------------------------------------
+
+weather_widget.php - Graham
+
+-------------------------------
+
+rss_feed.php - entirely unedited - Seif
+
+-------------------------------------------
+
+rss_view.php - minor additions - Seif
+
+URL parameter to restrict the data to a specific city
+Database queries for Cities, POIs, and News now use prepared statements to prevent SQL injection when filtering
+XML Viewing function allows users to view the raw XML feed directly inside the viewer without leaving the page.
+speak() function added to provide audio feedback for screen readers or via speech synthesis.
+handles an announce URL parameter to trigger specific audio announcements
