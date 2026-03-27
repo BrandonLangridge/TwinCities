@@ -57,7 +57,7 @@ place.php - largely unedited - (I believe this is map functionality??? Brandon??
 
 -------------------------------------------------
  
-config - all of us - (Graham happy to comment)
+config - Tyler - (Graham happy to comment as Tyler needs to document the previous version)
 
 A global exception handler was added to log errors and display a stylized error page
 Database and API settings were moved into defined constants
