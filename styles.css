@@ -1044,55 +1044,33 @@ div.weather-dashboard {
     opacity: 0.8;
 }
 
-#weatherSidePanel {
-    font-size: 0.92rem !important;
+/* Make the "Weather for Cologne" heading bigger */
+.weather-dashboard h2 {
+    font-size: 2.2rem !important; /* slightly larger */
+    margin-bottom: 36px !important; /* add extra space below */
 }
 
-#weatherSidePanel table th, 
-#weatherSidePanel table td {
-    padding-top: 7px !important;
-    padding-bottom: 7px !important;
-    line-height: 1.2 !important;
+/* Make current weather info bigger and more spaced */
+.weather-dashboard dt {
+    font-size: 1.05rem !important; /* slightly bigger labels */
 }
 
-#weatherSidePanel .current-weather-list div {
-    margin-bottom: 4px !important; 
-    padding: 2px 0 !important;
+.weather-dashboard dd {
+    font-size: 1.5rem !important; /* slightly bigger values */
 }
 
-#weatherSidePanel h2 {
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
-    font-size: 1.2rem !important;
+.weather-dashboard .current-weather-list div {
+    gap: 12px !important; /* more space between dt and dd */
 }
 
-html {
-  transform: scale(0.9) !important;
-  transform-origin: top left !important;
-  width: 111.11% !important;
-  height: 111.11% !important;
+/* Add more top/bottom padding to table rows for readability */
+.weather-dashboard table td,
+.weather-dashboard table th {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
 }
 
-#weatherSidePanel {
-    border-radius: 20px !important;
-    overflow: hidden !important;
-    clip-path: inset(0 0 0 0 round 20px) !important;
-}
-
-#weatherSidePanel .weather-dashboard,
-#weatherSidePanel .city {
-    border-radius: 0 !important;
-    margin: 0 !important;
-    height: 100% !important;
-    background-color: rgb(32, 32, 32) !important;
-}
-
-#weatherSidePanel .city {
-    margin-bottom: 0 !important;
-    padding-bottom: 20px !important;
-}
-
-#weatherSidePanel {
-    outline: 1px solid transparent; 
-    backface-visibility: hidden;
+.weather-dashboard h2{
+  padding-top: 5px;
+  padding-left: 5px;
 }
