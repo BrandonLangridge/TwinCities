@@ -99,7 +99,7 @@ function fetch_pixabay_photos(PDO $pdo, string $api_key, int $city_id, string $c
         . '&per_page=' . $per_page
         . '&image_type=photo&safesearch=true';
 
-    $ctx = stream_context_create(['http' => ['timeout' => 8]]);
+    $ctx = stream_context_create(['http' => ['timeout' => 15]]);
     $api_json = @file_get_contents($url, false, $ctx);
     $api = $api_json ? json_decode($api_json, true) : ['hits' => []];
     $hits = (isset($api['hits']) && is_array($api['hits'])) ? $api['hits'] : [];
