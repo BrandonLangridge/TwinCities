@@ -4,7 +4,7 @@
  *
  * Database Initialization Script
  * This script automates the creation of the database schema, defines table relationships,
- * and populates the system with initial seed data for Cities, POIs, and News.
+ * and populates the system with initial seed data for City, POIs, and News.
  */
 
 ob_start(); // Start output buffering to prevent header issues
@@ -32,7 +32,7 @@ try {
     // Tables are defined in an array and executed sequentially to maintain Foreign Key integrity.
     $tableQueries = [
         // Primary entity: All other tables depend on city_id
-        "CREATE TABLE Cities (
+        "CREATE TABLE City (
             city_id INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(100) NOT NULL,
             country VARCHAR(100) NOT NULL,
@@ -44,15 +44,15 @@ try {
             UNIQUE (name, country)
         ) ENGINE=InnoDB",
 
-        // User interaction table: Linked to Cities
-        "CREATE TABLE Comments (
-            comments_id INT AUTO_INCREMENT PRIMARY KEY,
+        // User interaction table: Linked to City
+        "CREATE TABLE Comment (
+            comment_id INT AUTO_INCREMENT PRIMARY KEY,
             user_name VARCHAR(100) NOT NULL,
             comment_text TEXT NOT NULL,
             search_query VARCHAR(255) DEFAULT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
             city_id INT NOT NULL,
-            CONSTRAINT fk_comments_city FOREIGN KEY (city_id) REFERENCES Cities(city_id) ON DELETE CASCADE,
+            CONSTRAINT fk_comment_city FOREIGN KEY (city_id) REFERENCES City(city_id) ON DELETE CASCADE,
             INDEX (search_query)
         ) ENGINE=InnoDB",
 
@@ -69,18 +69,18 @@ try {
             entry_fee VARCHAR(32) NULL,
             rating DECIMAL(2,1) NULL,
             city_id INT NOT NULL,
-            CONSTRAINT fk_poi_city FOREIGN KEY (city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
+            CONSTRAINT fk_poi_city FOREIGN KEY (city_id) REFERENCES City(city_id) ON DELETE CASCADE
         ) ENGINE=InnoDB",
 
         // Media assets: Includes optimized index for the search widget
-        "CREATE TABLE Photos (
+        "CREATE TABLE Photo (
             photo_id INT AUTO_INCREMENT PRIMARY KEY,
             city_id INT NOT NULL,
             page_num INT NOT NULL,
             image_url VARCHAR(512) NOT NULL,
             caption VARCHAR(255) DEFAULT NULL,
             cached_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-            CONSTRAINT fk_photos_city FOREIGN KEY (city_id) REFERENCES Cities(city_id) ON DELETE CASCADE,
+            CONSTRAINT fk_photo_city FOREIGN KEY (city_id) REFERENCES City(city_id) ON DELETE CASCADE,
             INDEX (city_id, caption)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4",
 
@@ -91,7 +91,7 @@ try {
             body TEXT NOT NULL,
             published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
             city_id INT NOT NULL,
-            CONSTRAINT fk_news_city FOREIGN KEY (city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
+            CONSTRAINT fk_news_city FOREIGN KEY (city_id) REFERENCES City(city_id) ON DELETE CASCADE
         ) ENGINE=InnoDB"
     ];
 
@@ -102,7 +102,7 @@ try {
 
     // 4. Seed Data: Master City Records
     $citySql = "
-    INSERT INTO Cities (city_id, name, country, population, latitude, longitude, currency, description) VALUES
+    INSERT INTO City (city_id, name, country, population, latitude, longitude, currency, description) VALUES
         (1, 'Liverpool', 'UK', 496784, 53.4084, -2.9916, 'GBP', 'A maritime city in northwest England.'),
         (2, 'Cologne', 'Germany', 1086000, 50.9375, 6.9603, 'EUR', 'A 2,000-year-old city spanning the Rhine River.');
     ";

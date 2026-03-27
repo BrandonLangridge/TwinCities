@@ -56,7 +56,7 @@ define('WEATHER_BASE_URL', 'https://api.open-meteo.com/v1/');
 define('PIXABAY_KEY', '54664421-9a17e2d26b529b08d054890af');
 
 define('RSS_TITLE', 'Liverpool & Cologne - Places Feed');
-define('RSS_DESCRIPTION', 'Dynamic RSS generated from Cities and Place_of_Interest tables.');
+define('RSS_DESCRIPTION', 'Dynamic RSS generated from City and Place_of_Interest tables.');
 define('RSS_MAX_ITEMS', 50);
 
 // Define Settings Array
@@ -82,8 +82,8 @@ $config = [
             SELECT 
                 c1.name AS city_1, 
                 c2.name AS city_2 
-            FROM Cities c1 
-            JOIN Cities c2 ON c1.country != c2.country 
+            FROM City c1 
+            JOIN City c2 ON c1.country != c2.country 
             LIMIT 1
         "
     ],

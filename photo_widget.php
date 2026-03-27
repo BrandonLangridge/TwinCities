@@ -39,7 +39,7 @@ function get_page_for_city(string $city_key): int
 function get_local_user_photos(PDO $pdo, int $city_id, int $page, int $per_page): array
 {
     // ORDER BY photo_id DESC ensures the newest uploads appear first
-    $stmt = $pdo->prepare("SELECT image_url FROM Photos WHERE city_id = ? AND caption = 'USER_UPLOAD' ORDER BY photo_id DESC LIMIT ? OFFSET ?");
+    $stmt = $pdo->prepare("SELECT image_url FROM Photo WHERE city_id = ? AND caption = 'USER_UPLOAD' ORDER BY photo_id DESC LIMIT ? OFFSET ?");
 
     $offset = ($page - 1) * $per_page;
     $stmt->bindValue(1, $city_id, PDO::PARAM_INT);
@@ -57,7 +57,7 @@ function get_cached_api_photos(PDO $pdo, int $city_id, int $page, int $slots, in
 {
     $cutoff = date('Y-m-d H:i:s', time() - $cache_lifetime);
 
-    $stmt = $pdo->prepare('SELECT image_url, caption FROM Photos WHERE city_id=? AND page_num=? AND cached_at >= ? ORDER BY photo_id ASC LIMIT ?');
+    $stmt = $pdo->prepare('SELECT image_url, caption FROM Photo WHERE city_id=? AND page_num=? AND cached_at >= ? ORDER BY photo_id ASC LIMIT ?');
     $stmt->bindValue(1, (string)$city_id, PDO::PARAM_STR);
     $stmt->bindValue(2, $page, PDO::PARAM_INT);
     $stmt->bindValue(3, $cutoff, PDO::PARAM_STR);
@@ -85,7 +85,7 @@ function fetch_pixabay_photos(PDO $pdo, string $api_key, int $city_id, string $c
     // Cleanup old cached API photos older than 1 hour
     $cache_lifetime = 3600;
     $cutoff = date('Y-m-d H:i:s', time() - $cache_lifetime);
-    $cleanup = $pdo->prepare("DELETE FROM Photos WHERE caption != 'USER_UPLOAD' AND cached_at < ?");
+    $cleanup = $pdo->prepare("DELETE FROM Photo WHERE caption != 'USER_UPLOAD' AND cached_at < ?");
     $cleanup->execute([$cutoff]);
 
     if ($needed_count <= 0) {
@@ -104,7 +104,7 @@ function fetch_pixabay_photos(PDO $pdo, string $api_key, int $city_id, string $c
     $api = $api_json ? json_decode($api_json, true) : ['hits' => []];
     $hits = (isset($api['hits']) && is_array($api['hits'])) ? $api['hits'] : [];
 
-    $insert = $pdo->prepare('INSERT INTO Photos (city_id, page_num, image_url, caption, cached_at) VALUES (?, ?, ?, ?, NOW())');
+    $insert = $pdo->prepare('INSERT INTO Photo (city_id, page_num, image_url, caption, cached_at) VALUES (?, ?, ?, ?, NOW())');
     $result = [];
 
     foreach ($hits as $photo) {

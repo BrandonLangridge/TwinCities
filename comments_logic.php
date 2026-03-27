@@ -30,7 +30,7 @@ function getCommentsForCity($cityId, $pdo) {
     // SQL QUERY
     // Using a organised statement to make the comments of queries a given city
     // this is sorted by newest
-    $sql = "SELECT * FROM Comments 
+    $sql = "SELECT * FROM Comment
             WHERE city_id = :cid 
             ORDER BY created_at DESC";
             
@@ -73,7 +73,7 @@ if ($cityId && !empty($comment)) {
         exit;
     }
     try {
-        $stmt = $pdo->prepare("INSERT INTO Comments (user_name, comment_text, search_query, city_id) VALUES (?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO Comment (user_name, comment_text, search_query, city_id) VALUES (?, ?, ?, ?)");
             $stmt->execute([$user, $comment, $query, $cityId]);
 
             // CACHE INVALIDATION 
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
     if ($deleteId && $cityId) {
         try {
             //Delete comment safely using  the prepared statement
-            $stmt = $pdo->prepare("DELETE FROM Comments WHERE comments_id = ?");
+            $stmt = $pdo->prepare("DELETE FROM Comment WHERE comment_id = ?");
             $stmt->execute([$deleteId]);
 
             // CACHE INVALIDATION 

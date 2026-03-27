@@ -15,7 +15,7 @@ if (!isset($_GET["poi_id"])) {
 $poiId = (int) $_GET["poi_id"];
 
 /* DATA RETRIEVAL
-   Joins Place_of_Interest and Cities to get full details. */
+   Joins Place_of_Interest and City to get full details. */
 try {
     $sql = "
       SELECT
@@ -27,7 +27,7 @@ try {
         c.name AS city_name,
         c.country
       FROM Place_of_Interest p
-      JOIN Cities c ON c.city_id = p.city_id
+      JOIN City c ON c.city_id = p.city_id
       WHERE p.poi_id = :id
     ";
 

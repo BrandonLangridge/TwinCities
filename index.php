@@ -6,7 +6,7 @@ session_start(); // Start session for temporary storage (uploads, messages)
  * Main controller handling:
  * - City selection and routing
  * - File uploads
- * - Database queries for cities, POIs, photos, and comments
+ * - Database queries for city, POIs, photos, and comments
  * - Rendering HTML + JS for the frontend
  */
 
@@ -18,9 +18,9 @@ $config = require_once __DIR__ . '/config.php';
 // Load reusable comment functions
 require_once __DIR__ . '/comments_logic.php';
 
-// Verify database connection (check Cities table)
+// Verify database connection (check City table)
 try {
-    $pdo->query("SELECT 1 FROM Cities LIMIT 1");
+    $pdo->query("SELECT 1 FROM City LIMIT 1");
 } catch (Exception $e) {
     // Redirect to setup page if DB not ready
     header("Location: setup.php");
@@ -84,7 +84,7 @@ if ($hasSelectedCity) {
             if (move_uploaded_file($file['tmp_name'], $target)) {
 
                 // Store reference in database
-                $stmt = $pdo->prepare("INSERT INTO Photos (city_id, page_num, image_url, caption, cached_at) VALUES (?, ?, ?, 'USER_UPLOAD', NOW())");
+                $stmt = $pdo->prepare("INSERT INTO Photo (city_id, page_num, image_url, caption, cached_at) VALUES (?, ?, ?, 'USER_UPLOAD', NOW())");
                 $stmt->execute([(int)$city_id, 1, $target]);
 
                 // Strip pagination params from URL
@@ -112,14 +112,14 @@ if ($hasSelectedCity) {
     }
 
     // --- GET CITY ID FROM DATABASE ---
-    $stmt = $pdo->prepare("SELECT city_id FROM Cities WHERE name = ? LIMIT 1");
+    $stmt = $pdo->prepare("SELECT city_id FROM City WHERE name = ? LIMIT 1");
     $stmt->execute([$currentCityName]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $currentCityId = ($row && isset($row['city_id'])) ? $row['city_id'] : 1;
 
     // --- FETCH POINTS OF INTEREST ---
     try {
-        $stmtPois = $pdo->prepare("SELECT p.poi_id, p.name, p.type, p.latitude, p.longitude, p.description, p.year_opened, p.entry_fee, p.rating, c.name AS city_name FROM Place_of_Interest p JOIN Cities c ON c.city_id = p.city_id WHERE LOWER(c.name) = LOWER(?) ORDER BY p.poi_id ASC");
+        $stmtPois = $pdo->prepare("SELECT p.poi_id, p.name, p.type, p.latitude, p.longitude, p.description, p.year_opened, p.entry_fee, p.rating, c.name AS city_name FROM Place_of_Interest p JOIN City c ON c.city_id = p.city_id WHERE LOWER(c.name) = LOWER(?) ORDER BY p.poi_id ASC");
         $stmtPois->execute([$currentCityName]);
         $poiRows = $stmtPois->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {

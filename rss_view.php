@@ -23,13 +23,13 @@ if (!empty($_GET['city'])) {
 // so each row comes back as a named array rather than a numbered one.
 $cities = [];
 if ($filterCity) {
-  $stmt = $pdo->prepare("SELECT city_id, name, country, population, latitude, longitude, currency, description FROM Cities WHERE LOWER(name) = LOWER(?) ORDER BY name ASC");
+  $stmt = $pdo->prepare("SELECT city_id, name, country, population, latitude, longitude, currency, description FROM City WHERE LOWER(name) = LOWER(?) ORDER BY name ASC");
   $stmt->execute([$filterCity]);
   $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
   $cities = $pdo->query("
     SELECT city_id, name, country, population, latitude, longitude, currency, description
-    FROM   Cities ORDER BY name ASC
+    FROM   City ORDER BY name ASC
   ")->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -39,7 +39,7 @@ if ($filterCity) {
 // The LIMIT comes from config so we don't accidentally dump too many rows.
 $pois = [];
 if ($filterCity) {
-  $stmt = $pdo->prepare("SELECT p.poi_id, p.name, p.type, p.capacity, p.latitude, p.longitude, p.description, c.name AS city_name, c.country FROM Place_of_Interest p JOIN Cities c ON c.city_id = p.city_id WHERE LOWER(c.name) = LOWER(?) ORDER BY p.name ASC LIMIT ?");
+  $stmt = $pdo->prepare("SELECT p.poi_id, p.name, p.type, p.capacity, p.latitude, p.longitude, p.description, c.name AS city_name, c.country FROM Place_of_Interest p JOIN City c ON c.city_id = p.city_id WHERE LOWER(c.name) = LOWER(?) ORDER BY p.name ASC LIMIT ?");
   $stmt->bindValue(1, $filterCity, PDO::PARAM_STR);
   $stmt->bindValue(2, (int)$rssMaxItems, PDO::PARAM_INT);
   $stmt->execute();
@@ -49,7 +49,7 @@ if ($filterCity) {
     SELECT p.poi_id, p.name, p.type, p.capacity, p.latitude, p.longitude,
            p.description, c.name AS city_name, c.country
     FROM   Place_of_Interest p
-    JOIN   Cities c ON c.city_id = p.city_id
+    JOIN   City c ON c.city_id = p.city_id
     ORDER  BY c.name ASC, p.name ASC
     LIMIT  {$rssMaxItems}
   ")->fetchAll(PDO::FETCH_ASSOC);
@@ -61,7 +61,7 @@ if ($filterCity) {
 $news = [];
 try {
   if ($filterCity) {
-    $stmt = $pdo->prepare("SELECT n.news_id, n.headline, n.body, n.published_at, c.name AS city_name FROM News n JOIN Cities c ON c.city_id = n.city_id WHERE LOWER(c.name) = LOWER(?) ORDER BY n.published_at DESC LIMIT ?");
+    $stmt = $pdo->prepare("SELECT n.news_id, n.headline, n.body, n.published_at, c.name AS city_name FROM News n JOIN City c ON c.city_id = n.city_id WHERE LOWER(c.name) = LOWER(?) ORDER BY n.published_at DESC LIMIT ?");
     $stmt->bindValue(1, $filterCity, PDO::PARAM_STR);
     $stmt->bindValue(2, (int)$rssMaxItems, PDO::PARAM_INT);
     $stmt->execute();
@@ -70,7 +70,7 @@ try {
     $news = $pdo->query("
       SELECT n.news_id, n.headline, n.body, n.published_at, c.name AS city_name
       FROM   News n
-      JOIN   Cities c ON c.city_id = n.city_id
+      JOIN   City c ON c.city_id = n.city_id
       ORDER  BY n.published_at DESC
       LIMIT  {$rssMaxItems}
     ")->fetchAll(PDO::FETCH_ASSOC);

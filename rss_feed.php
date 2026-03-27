@@ -4,7 +4,7 @@
     This file generates the actual RSS 2.0 XML feed for the Twin Cities app.
     When you open it in a browser or feed reader, it outputs raw XML — not HTML.
     All the data it serves comes live from the MySQL database, so it always
-    reflects whatever is currently stored in the Cities, Place_of_Interest,
+    reflects whatever is currently stored in the City, Place_of_Interest,
     and News tables.
 */
 
@@ -49,7 +49,7 @@ try {
     $stmtCities = $pdo->query("
         SELECT city_id, name, country, population, latitude, longitude,
                currency, description
-        FROM   Cities
+        FROM   City
         ORDER  BY name ASC
     ");
     $cities = $stmtCities->fetchAll(PDO::FETCH_ASSOC);
@@ -63,7 +63,7 @@ try {
                p.latitude, p.longitude, p.description,
                c.name AS city_name, c.country
         FROM   Place_of_Interest p
-        JOIN   Cities c ON c.city_id = p.city_id
+        JOIN   City c ON c.city_id = p.city_id
         ORDER  BY c.name ASC, p.name ASC
         LIMIT  {$rssMaxItems}
     ");
@@ -78,7 +78,7 @@ try {
             SELECT n.news_id, n.headline, n.body, n.published_at,
                    c.name AS city_name
             FROM   News n
-            JOIN   Cities c ON c.city_id = n.city_id
+            JOIN   City c ON c.city_id = n.city_id
             ORDER  BY n.published_at DESC
             LIMIT  {$rssMaxItems}
         ");
@@ -177,7 +177,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
       <dc:subject>City</dc:subject>
 
-      <!-- Geo coordinates pulled straight from the Cities table -->
+      <!-- Geo coordinates pulled straight from the City table -->
       <geo:lat><?= xmlEscape($city['latitude']) ?></geo:lat>
       <geo:long><?= xmlEscape($city['longitude']) ?></geo:long>
     </item>
