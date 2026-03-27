@@ -13,9 +13,10 @@ set_exception_handler(function ($e) {
     error_log("TwinCities Exception: " . $e->getMessage());
 
     // Display the error with humour and style using Tailwind CSS
+    // Notice: Only ONE opening quote after 'echo' and ONE closing quote at the very end.
     echo "
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
     <script src='https://cdn.tailwindcss.com'></script>
 </head>
@@ -28,7 +29,6 @@ set_exception_handler(function ($e) {
             " . htmlspecialchars($e->getMessage()) . "
         </div>
         <div class='text-sm text-gray-500 mb-1'>If it keeps happening, it's probably not you...</div>
-
     </div>
 </body>
 </html>";

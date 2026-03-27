@@ -1,9 +1,9 @@
 <?php
 /* maps.php */
 
+require_once "config.php"; 
+
 // Map Component
-
-
 ?>
 
 <!-- Map Container -->
