@@ -1188,3 +1188,32 @@ div.weather-dashboard {
     font-size: 1.5rem; 
     line-height: 1;
 }
+
+/* barrier */
+
+/* Center h2 and button together while keeping them on the same line */
+#poiModalBody {
+  text-align: center; /* centers all inline/inline-block children */
+}
+
+#poiModalBody h2,
+#poiModalBody #poiReadBtn {
+  display: inline-block;   /* stay side by side */
+  vertical-align: middle;  /* align header and button vertically */
+  margin: 0;               /* remove default margins */
+}
+
+#poiModalBody h2 {
+  font-size: 2em !important; /* slightly bigger header */
+}
+
+#poiModalBody #poiReadBtn {
+  font-size: 0.9em;       /* keep button small */
+  padding: 6px 10px;      /* button padding */
+  margin-left: 10px;      /* spacing from header */
+}
+
+/* Slight spacing above the image */
+#poiModalBody img {
+  margin-top: 12px !important;
+}
