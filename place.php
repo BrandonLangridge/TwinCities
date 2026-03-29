@@ -11,7 +11,8 @@ if (!isset($_GET["poi_id"])) {
     exit;
 }
 
-// Cast to INT for security
+/* Cast to INT for security, ensuring if a user tries to inject malicious text into
+the URL (e.g. place.php?poi_id=DROP TABLE) it will be converted to 0. */
 $poiId = (int) $_GET["poi_id"];
 
 /* DATA RETRIEVAL
@@ -50,6 +51,7 @@ if (!$place) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Browser tab shows the actual name of the place, better for book marking. -->
   <title><?= htmlspecialchars($place["place_name"]) ?> | Details</title>
 
   <style>
@@ -65,6 +67,7 @@ if (!$place) {
 </head>
 
 <body>
+  <!-- Tells screnn readers exactly where the primary content begins -->
   <div class="container" role="main">
     <div class="header">
       <a href="javascript:history.back()" class="toggle-button" style="text-decoration:none; padding: 8px 16px; background: #eee; border-radius: 4px; color: #333;">← Back</a>
@@ -99,6 +102,7 @@ if (!$place) {
 
   <script>
     /* PERSISTENT ACCESSIBILITY */
+    // Even if the user refreshes the page the colourblind settings remain.
     let colorBlindEnabled = false;
     try { colorBlindEnabled = localStorage.getItem("colorBlindEnabled") === "true"; } catch (e) { colorBlindEnabled = false; }
     if (colorBlindEnabled) { document.body.classList.add("colorblind"); }
