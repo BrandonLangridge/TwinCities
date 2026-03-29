@@ -1,3 +1,8 @@
+<?php
+$config = include __DIR__ . '/config.php';
+?>
+
+
 <!-- 404 page that is seen by a user who tries to view a non-existent page -->
 
 <!DOCTYPE html>

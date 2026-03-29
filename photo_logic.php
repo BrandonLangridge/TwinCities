@@ -5,6 +5,9 @@
  * Pixabay API integration, and cache management.
  */
 
+
+require_once 'config.php';
+
 /**
  * Validates if a string is a properly formatted URL or a local path.
  * Updated to support the 'user_pics/' directory.
