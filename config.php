@@ -1,19 +1,34 @@
 <?php
 /* config.php */
 
-// central configuration file for the TwinCities project
 
 /* --- THE ERROR OVERSEER --- */
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// This captures E_WARNING/E_NOTICE and turns them into Exceptions
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+});
 
 set_exception_handler(function ($e) {
-    // Log the technical tragedy to XAMPP
-    error_log("TwinCities Exception: " . $e->getMessage());
+    // Path to log file inside project folder
+    $logFile = __DIR__ . '/logs/errors.log';
 
-    // Display the error with humour and style using Tailwind CSS
-    // Notice: Only ONE opening quote after 'echo' and ONE closing quote at the very end.
+    // Ensure log folder exists
+    if (!file_exists(dirname($logFile))) {
+        mkdir(dirname($logFile), 0777, true);
+    }
+
+    // Generate a unique error ID
+    $errorId = uniqid('TC-', true);
+
+    // Log full technical details internally
+    $logMessage = "[" . date('Y-m-d H:i:s') . "] Error ID: $errorId\n";
+    $logMessage .= "Exception: " . $e->getMessage() . "\n";
+    $logMessage .= "File: " . $e->getFile() . " (Line " . $e->getLine() . ")\n";
+    $logMessage .= "Stack trace:\n" . $e->getTraceAsString() . "\n\n";
+    error_log($logMessage, 3, $logFile);
+
+    // Display friendly message to the user (no technical details)
     echo "
 <!DOCTYPE html>
 <html lang='en'>
@@ -25,13 +40,11 @@ set_exception_handler(function ($e) {
         <div class='text-sm text-gray-500 mb-1'>Unexpected error</div>
         <h2 class='text-lg font-semibold text-gray-900 mb-2'>Something went wrong</h2>
         <p class='text-sm text-gray-600 mb-4'>We couldn’t complete your request. Please try again.</p>
-        <div class='bg-gray-50 border border-gray-200 rounded-md p-3 text-sm font-mono text-red-600 mb-4 overflow-x-auto'>
-            " . htmlspecialchars($e->getMessage()) . "
-        </div>
         <div class='text-sm text-gray-500 mb-1'>If it keeps happening, it's probably not you...</div>
     </div>
 </body>
 </html>";
+
     exit;
 });
 

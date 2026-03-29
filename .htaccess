@@ -1,8 +1,17 @@
-# Htaccess page that contains the location for the 404 page and denies users acccess to config
+# Htaccess page that contains the location for the 404 page and denies users acccess to config and error logs file
 
+
+# Define location of 404 page
 ErrorDocument 404 /TwinCities-main/404.php
 
+# Deny direct access to config.php
 <Files "config.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Deny direct access to error logs
+<Files "errors.log">
     Order Allow,Deny
     Deny from all
 </Files>

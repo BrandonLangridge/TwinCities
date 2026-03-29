@@ -1,0 +1,43 @@
+[2026-03-29 13:01:07] Error ID: TC-69c90673a709b7.54879899
+Exception: Undefined constant "DB_PASSssss"
+File: C:\xampp\htdocs\TwinCities-main\config.php (Line 76)
+Stack trace:
+#0 C:\xampp\htdocs\TwinCities-main\index.php(17): require_once()
+#1 {main}
+
+[2026-03-29 13:03:11] Error ID: TC-69c906eface405.35367844
+Exception: Undefined constant "DB_PASSssss"
+File: C:\xampp\htdocs\TwinCities-main\config.php (Line 76)
+Stack trace:
+#0 C:\xampp\htdocs\TwinCities-main\index.php(17): require_once()
+#1 {main}
+
+[2026-03-29 13:03:18] Error ID: TC-69c906f63a56b8.30001493
+Exception: Undefined constant "DB_PASSssss"
+File: C:\xampp\htdocs\TwinCities-main\config.php (Line 76)
+Stack trace:
+#0 C:\xampp\htdocs\TwinCities-main\index.php(17): require_once()
+#1 {main}
+
+[2026-03-29 13:17:15] Error ID: TC-69c90a3bd4a9c4.90470433
+Exception: The user tried to divide by zero!
+File: C:\xampp\htdocs\TwinCities-main\index.php (Line 24)
+Stack trace:
+#0 {main}
+
+[2026-03-29 13:17:45] Error ID: TC-69c90a599b4cf0.74729708
+Exception: fopen(non_existent_file.txt): Failed to open stream: No such file or directory
+File: C:\xampp\htdocs\TwinCities-main\index.php (Line 22)
+Stack trace:
+#0 [internal function]: {closure}(2, 'fopen(non_exist...', 'C:\\xampp\\htdocs...', 22)
+#1 C:\xampp\htdocs\TwinCities-main\index.php(22): fopen('non_existent_fi...', 'r')
+#2 {main}
+
+[2026-03-29 13:17:54] Error ID: TC-69c90a62233de7.39321656
+Exception: fopen(non_existent_file.txt): Failed to open stream: No such file or directory
+File: C:\xampp\htdocs\TwinCities-main\index.php (Line 22)
+Stack trace:
+#0 [internal function]: {closure}(2, 'fopen(non_exist...', 'C:\\xampp\\htdocs...', 22)
+#1 C:\xampp\htdocs\TwinCities-main\index.php(22): fopen('non_existent_fi...', 'r')
+#2 {main}
+

@@ -1,47 +1,62 @@
 <?php
+// Weather widget renderer (safe + resilient)
 
-/**
- * weather_widget.php - Cleaned Version
- * * This function fetches weather data from an external API and 
- * renders a 7-day forecast table and current conditions.
- */
+// Ensure config is loaded
+if (!defined('DB_HOST')) {
+    require_once __DIR__ . '/config.php';
+}
 
+// Render weather UI
 function renderWeatherWidget($cityName, $lat, $lon, $weatherBase, $units, $weatherCodes)
 {
-
-    // Mapping from 'metric' to 'celsius' to combat any errors
-    // Open-Meteo API specifically looks for 'celsius' or 'fahrenheit' strings
+    // Convert units for API
     $apiUnits = ($units === 'metric') ? 'celsius' : (($units === 'imperial') ? 'fahrenheit' : $units);
 
-    $baseUrl = rtrim($weatherBase, '/');
+    // Clean base URL
+    $baseUrl  = rtrim($weatherBase, '/');
     
-    // Define parameters for the API call including daily variables and timezone
+    // Build API query
     $queryParams = [
-        'current_weather'  => 'true',
+        'current_weather'  => 'true', // include current data
         'latitude'         => $lat,
         'longitude'        => $lon,
         'daily'            => 'temperature_2m_max,temperature_2m_min,sunrise,sunset,weathercode,precipitation_sum',
-        'timezone'         => 'auto',
-        'forecast_days'    => 7,
+        'timezone'         => 'auto', // auto timezone
+        'forecast_days'    => 7,      // 7-day forecast
         'temperature_unit' => $apiUnits
     ];
 
-    // Construct the full URL with encoded query parameters
+    // Final API URL
     $url = $baseUrl . "/forecast?" . http_build_query($queryParams, '', '&', PHP_QUERY_RFC3986);
 
-    // Initialize cURL session to fetch the weather data
+    // Init cURL
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Disable SSL verification for compatibility
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);           // Set a 10-second timeout limit
+
+    // Set cURL options
+    curl_setopt($ch, CURLOPT_URL, $url);            // target URL
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // return response
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);// skip SSL check
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);          // timeout
+          
+    // Execute request
     $response = curl_exec($ch);
+    
+    // Check for cURL errors
+    if (curl_errno($ch)) {
+        $errorMsg = curl_error($ch);
+        curl_close($ch);
+
+        // Throw for global handler
+        throw new Exception("Weather Connectivity Error: " . $errorMsg);
+    }
+
+    // Close cURL
     curl_close($ch);
 
-    // Decode the JSON response into an associative array
+    // Decode JSON
     $data = json_decode($response, true);
 
-    // Error Handling: If API fails or returns invalid data, show a fallback message
+    // Validate API response
     if (!$data || !isset($data["daily"])) {
 ?>
         <article class="city weather-error-placeholder">
@@ -52,17 +67,20 @@ function renderWeatherWidget($cityName, $lat, $lon, $weatherBase, $units, $weath
                 <p>We’re having trouble reaching the forecast provider. Please try refreshing the page in a few moments.</p>
             </div>
         </article>
-    <?php
-        return;
+<?php
+        return; // stop safely
     }
 
-    ?>
+    // Start main UI
+?>
     <article class="city" aria-labelledby="label-<?= htmlspecialchars($cityName) ?>">
         <h2 id="label-<?= htmlspecialchars($cityName) ?>">Weather for <?= htmlspecialchars($cityName) ?></h2>
 
         <?php 
-        // Display Current Weather section if data is available
-        if (isset($data["current_weather"])): $current = $data["current_weather"]; ?>
+        // Show current weather if available
+        if (isset($data["current_weather"])): 
+            $current = $data["current_weather"]; 
+        ?>
             <dl class="current-weather-list">
                 <div>
                     <dt>Current Temp:</dt>
@@ -79,6 +97,7 @@ function renderWeatherWidget($cityName, $lat, $lon, $weatherBase, $units, $weath
             </dl>
         <?php endif; ?>
 
+        <!-- Forecast table -->
         <div class="table-responsive">
             <table>
                 <thead>
@@ -94,10 +113,12 @@ function renderWeatherWidget($cityName, $lat, $lon, $weatherBase, $units, $weath
                 </thead>
                 <tbody>
                     <?php
-                    $daily = $data["daily"];
-                    // Loop through the 7-day forecast data
+                    $daily = $data["daily"]; // daily data
+
+                    // Loop through days
                     for ($i = 0; $i < count($daily["time"]); $i++):
-                        // Convert API date string to a readable format (e.g., Mon, 12 Oct)
+                        
+                        // Format date
                         $day = date("D, j M", strtotime($daily["time"][$i]));
                     ?>
                         <tr>

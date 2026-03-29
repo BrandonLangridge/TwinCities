@@ -1,123 +1,91 @@
 <?php
-session_start(); // Start session for temporary storage (uploads, messages)
-
 /**
- * index.php - Unified Controller Version
- * Main controller handling:
- * - City selection and routing
- * - File uploads
- * - Database queries for city, POIs, photos, and comments
- * - Rendering HTML + JS for the frontend
+ * index.php - Unified Controller & View for Twin Cities Application
+ * * This file serves as the main entry point (Router/Controller) for the application.
+ * It manages:
+ * 1. State: Session management and city selection routing.
+ * 2. Data: Fetching Points of Interest (POIs) and Comments from the database.
+ * 3. Integrations: Preparing data for Leaflet maps, RSS feeds, and Weather widgets.
+ * 4. Accessibility: Handling voice synthesis and color-blind accessibility modes.
  */
 
-// --- INITIALIZATION ---
+session_start(); // Initialise session to persist user feedback or temporary upload states
 
-// Load configuration (DB, API keys, etc.)
+// --- INITIALIZATION & DEPENDENCIES ---
+
+// Load configuration containing DB credentials, API keys, and system constants
 $config = require_once __DIR__ . '/config.php';
 
-// Load reusable comment functions
+// Load business logic for handling user comments (submission and retrieval)
 require_once __DIR__ . '/comments_logic.php';
 
-// Verify database connection (check City table)
+
+
+/**
+ * DATABASE VALIDATION
+ * Before proceeding, ensure the database is reachable.
+ * If the 'City' table doesn't exist or connection fails, redirect to the setup wizard.
+ */
 try {
     $pdo->query("SELECT 1 FROM City LIMIT 1");
 } catch (Exception $e) {
-    // Redirect to setup page if DB not ready
     header("Location: setup.php");
     exit;
 }
 
-// Static city data for UI and routing (avoids extra DB queries)
+/**
+ * STATIC CITY DATA
+ * Definitions for the two primary cities. Used for:
+ * - Rendering the initial selection landing page
+ * - Setting map center coordinates
+ * - Validating 'city' GET parameters for routing
+ */
 $cities = [
     "Liverpool" => ["lat" => 53.4106, "lon" => -2.9779, "image" => "app_images/liverpool.jpg", "label" => "Liverpool"],
     "Cologne"   => ["lat" => 50.9333, "lon" => 6.95,    "image" => "app_images/cologne.jpg",   "label" => "Cologne"]
 ];
 
-// Get selected city from URL
+// Determine the requested city from the URL (e.g., index.php?city=liverpool)
 $requestedCity   = isset($_GET['city']) ? ucfirst($_GET['city']) : null;
 
-// Check if selected city exists in static list
+// Validate if the requested city is supported by our $cities array
 $hasSelectedCity = $requestedCity && array_key_exists($requestedCity, $cities);
 
-// Store current city name if valid
+// Set specific city name for database queries if valid
 $currentCityName = $hasSelectedCity ? $requestedCity : null;
 
-// Cache busting for CSS
+// Generate a version string based on CSS file modification time to prevent browser caching issues
 $assetVersion = filemtime('styles.css');
 
-// Initialize variables to prevent warnings
+// Default initialization to prevent PHP notices in the global scope
 $currentCityId = 1;
 $otherCityName = null;
-$coords        = ["lat" => 0, "lon" => 0];
+$coords         = ["lat" => 0, "lon" => 0];
 
-// Weather API setup
+// Preparation for the Weather API widget
 $weatherBase = rtrim(WEATHER_BASE_URL, '/');
 $units       = $config['api']['weather_units'] ?? 'metric';
 
-// --- LOGIC FOR SELECTED CITY ---
+// --- LOGIC FOR SELECTED CITY VIEW ---
 
 if ($hasSelectedCity) {
-    // Set coordinates for the selected city
+    // Map center coordinates retrieved from static array
     $coords = $cities[$currentCityName];
 
-    // --- HANDLE IMAGE UPLOAD ---
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['new_photo'])) {
-
-        $city_id = (int)$_POST['city_id'];
-        $file    = $_FILES['new_photo'];
-
-        // Upload constraints
-        $max_size = 2 * 1024 * 1024; // 2MB
-        $ext      = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        $allowed  = ['jpg', 'jpeg', 'png'];
-
-        // Validate upload
-        if ($file['size'] > 0 && $file['size'] <= $max_size && $file['error'] === 0 && in_array($ext, $allowed)) {
-
-            // Ensure upload directory exists
-            if (!file_exists("user_pics/")) mkdir("user_pics/", 0755, true);
-
-            // Unique filename to prevent overwriting
-            $target = "user_pics/city{$city_id}_" . uniqid() . ".{$ext}";
-
-            // Move uploaded file
-            if (move_uploaded_file($file['tmp_name'], $target)) {
-
-                // Store reference in database
-                $stmt = $pdo->prepare("INSERT INTO Photo (city_id, page_num, image_url, caption, cached_at) VALUES (?, ?, ?, 'USER_UPLOAD', NOW())");
-                $stmt->execute([(int)$city_id, 1, $target]);
-
-                // Strip pagination params from URL
-                $params = $_GET;
-                unset($params['p']);
-                foreach ($params as $key => $value) {
-                    if (substr($key, -2) === '_p') unset($params[$key]);
-                }
-
-                // Reset pagination and add announcement
-                $params['p'] = 1;
-                $params['announce'] = 'picture_added_to_page_1';
-
-                // Redirect to refresh page state
-                header("Location: index.php?" . http_build_query($params) . "#photo-widget");
-                exit;
-            }
-
-        } else {
-            // Store upload error in session
-            $_SESSION['upload_msg'] = ($file['size'] > 2 * 1024 * 1024) ? 'too_big' : 'wrong_type';
-            header("Location: index.php?city=" . urlencode($_GET['city']) . "#photo-widget");
-            exit;
-        }
-    }
-
-    // --- GET CITY ID FROM DATABASE ---
+    /**
+     * DATABASE LOOKUP: City ID
+     * Retrieve the unique ID for the selected city to link POIs and Comments.
+     */
     $stmt = $pdo->prepare("SELECT city_id FROM City WHERE name = ? LIMIT 1");
     $stmt->execute([$currentCityName]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $currentCityId = ($row && isset($row['city_id'])) ? $row['city_id'] : 1;
 
-    // --- FETCH POINTS OF INTEREST ---
+    /**
+     * DATABASE LOOKUP: Points of Interest
+     * Fetches POI data including coordinates and descriptions.
+     * Uses a JOIN with the City table to ensure relational integrity.
+     */
     try {
         $stmtPois = $pdo->prepare("SELECT p.poi_id, p.name, p.type, p.latitude, p.longitude, p.description, p.year_opened, p.entry_fee, p.rating, c.name AS city_name FROM Place_of_Interest p JOIN City c ON c.city_id = p.city_id WHERE LOWER(c.name) = LOWER(?) ORDER BY p.poi_id ASC");
         $stmtPois->execute([$currentCityName]);
@@ -126,7 +94,11 @@ if ($hasSelectedCity) {
         $poiRows = [];
     }
 
-    // Convert POIs to JS-friendly format
+    /**
+     * DATA FORMATTING FOR JAVASCRIPT
+     * Maps the database result set into a clean associative array.
+     * This will be encoded to JSON later for use by the Leaflet Map engine.
+     */
     $jsPois = array_map(function ($r) {
         return [
             'id'          => (int)($r['poi_id'] ?? 0),
@@ -142,10 +114,13 @@ if ($hasSelectedCity) {
         ];
     }, $poiRows);
 
-    // Load weather widget if available
+    // Load the weather widget logic if the file exists on the server
     if (file_exists(__DIR__ . '/weather_widget.php')) require_once __DIR__ . '/weather_widget.php';
 
-    // Determine the "other city" for switch button
+    /**
+     * UI HELPER: Switch City
+     * Identifies the 'other' city in the array to provide a quick-switch toggle in the UI.
+     */
     foreach (array_keys($cities) as $name) {
         if ($name !== $currentCityName) {
             $otherCityName = $name;
@@ -160,10 +135,10 @@ if ($hasSelectedCity) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twin Cities</title>
-    <link rel="stylesheet" href="styles.css?v=<?= urlencode($assetVersion); ?>"> <!-- Cache-busting -->
+    <link rel="stylesheet" href="styles.css?v=<?= urlencode($assetVersion); ?>"> 
     <link rel="icon" type="image/png" href="app_images/cityfav.png">
+    
     <?php if ($hasSelectedCity): ?>
-        <!-- Leaflet map CSS -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <?php endif; ?>
 </head>
@@ -172,11 +147,10 @@ if ($hasSelectedCity) {
 <header class="<?= $hasSelectedCity ? 'index-selected-hero' : '' ?>">
     <div class="<?= $hasSelectedCity ? 'index-selected-main' : '' ?>">
         <h1>Twin Cities: <span class="h1-accent"><?= $hasSelectedCity ? htmlspecialchars($currentCityName) : 'Liverpool & Cologne' ?></span></h1>
+        
         <div class="toggle-container">
-            <!-- Voice feedback toggle -->
             <button id="voiceToggle" class="toggle-button btn--accent">Voice Feedback: OFF</button>
 
-            <!-- Color-blind mode dropdown -->
             <select id="colorModeSelect" class="toggle-button color-select-dropdown">
                 <option value="none">Color-Blind Mode: OFF</option>
                 <option value="protan">Protanopia</option>
@@ -185,7 +159,6 @@ if ($hasSelectedCity) {
             </select>
 
             <?php if ($hasSelectedCity): ?>
-                <!-- Side panel buttons -->
                 <button id="rssJump" class="toggle-button btn--accent">View RSS Feed</button>
                 <button id="weatherJump" class="toggle-button btn--accent-alt">View Weather</button>
             <?php endif; ?>
@@ -193,7 +166,6 @@ if ($hasSelectedCity) {
     </div>
 
     <?php if ($hasSelectedCity && $otherCityName): ?>
-        <!-- Button to switch to the other city -->
         <a class="city city-mini-switch" href="index.php?city=<?= urlencode(strtolower($otherCityName)); ?>">
             <img src="<?= htmlspecialchars($cities[$otherCityName]['image']); ?>" alt="<?= $otherCityName ?>">
             <h2><?= htmlspecialchars($otherCityName); ?></h2>
@@ -204,7 +176,6 @@ if ($hasSelectedCity) {
 
 <main>
 <?php if (!$hasSelectedCity): ?>
-    <!-- City selection view -->
     <div class="city-container">
         <?php foreach ($cities as $name => $data): ?>
             <a class="city" href="index.php?city=<?= strtolower($name) ?>">
@@ -215,21 +186,22 @@ if ($hasSelectedCity) {
         <?php endforeach; ?>
     </div>
 <?php else: ?>
-    <!-- Selected city view with map, RSS, weather -->
     <section class="map-rss-row" id="mapRssRow" aria-label="Map and RSS area">
         <?php
-        // Pass POIs to JS
+        /**
+         * MAP INTEGRATION
+         * Data is bridged from PHP to JS by echo-ing a JSON object.
+         * The 'maps.php' file contains the Leaflet initialization logic.
+         */
         echo "<script>const pois = " . json_encode($jsPois, JSON_UNESCAPED_UNICODE) . ";</script>";
         include 'maps.php';
         ?>
 
-        <!-- RSS side panel -->
         <aside class="rss-side-panel" id="rssSidePanel">
             <h2>City RSS Feed</h2>
             <iframe id="rssFrame" title="City RSS feed" loading="lazy"></iframe>
         </aside>
 
-        <!-- Weather side panel -->
         <aside class="weather-side-panel" id="weatherSidePanel">
             <div class="weather-dashboard">
                 <?php if (function_exists('renderWeatherWidget')) {
@@ -239,12 +211,12 @@ if ($hasSelectedCity) {
         </aside>
     </section>
 
-    <?php include 'photo_widget.php'; ?> <!-- Photo upload/display widget -->
+    <?php include 'photo_widget.php'; ?>
 
-    <!-- Comments Section -->
     <section id="comments-section">
         <div class="container">
             <h2 class="comments-title">Comments</h2>
+            
             <form class="comment-form" method="POST">
                 <input type="hidden" name="city_id" value="<?= (int)$currentCityId; ?>">
                 <input type="text" name="user_name" placeholder="Your name" maxlength="100" required>
@@ -252,17 +224,24 @@ if ($hasSelectedCity) {
                 <button type="submit" name="submit_comment" class="toggle-button">Post Comment</button>
             </form>
 
-            <?php $comments = function_exists('getCommentsForCity') ? getCommentsForCity((int)$currentCityId, $pdo) : []; ?>
+            <?php 
+            /**
+             * RENDER COMMENTS
+             * Fetches list of comments from database for the current city ID.
+             */
+            $comments = function_exists('getCommentsForCity') ? getCommentsForCity((int)$currentCityId, $pdo) : []; 
+            ?>
+            
             <?php if (empty($comments)): ?>
                 <p class="empty-note">No comments yet. Be the first to post!</p>
             <?php else: foreach ($comments as $c): ?>
                 <div class="comment-card" style="position: relative;">
-                    <!-- Delete comment button -->
                     <form method="POST" style="position: absolute; top: 10px; right: 10px; margin: 0;">
                         <input type="hidden" name="delete_id" value="<?= (int)($c['comments_id'] ?? $c['comment_id']); ?>">
                         <input type="hidden" name="city_id" value="<?= (int)$currentCityId; ?>">
                         <button type="submit" name="delete_comment" class="delete-btn">×</button>
                     </form>
+                    
                     <div class="comment-header"><strong><?= htmlspecialchars($c['user_name'] ?? 'Anonymous'); ?></strong></div>
                     <p><?= nl2br(htmlspecialchars($c['comment_text'] ?? '')); ?></p>
                 </div>
@@ -272,31 +251,47 @@ if ($hasSelectedCity) {
 <?php endif; ?>
 </main>
 
-<!-- ARIA live region for voice feedback -->
 <div id="aria-live" aria-live="polite" style="position:absolute; left:-9999px;"></div>
 
 <script>
-// VOICE FEEDBACK ENGINE
+/**
+ * --- JAVASCRIPT GLOBAL HANDLERS ---
+ * Manages the client-side interactivity, local storage, and Web Speech API.
+ */
+
+// STATE MANAGEMENT: Persistent UI preferences via LocalStorage
 let voiceEnabled = localStorage.getItem("voiceEnabled") === "true";
 const voiceBtn = document.getElementById("voiceToggle");
 const colorSelect = document.getElementById("colorModeSelect");
 
-// Function to speak messages
+/**
+ * SPEECH ENGINE
+ * Orchestrates text-to-speech feedback and ARIA live region updates.
+ * @param {string} text - The message to announce.
+ */
 function speak(text) {
     const liveRegion = document.getElementById('aria-live');
-    if (liveRegion) liveRegion.textContent = text;
+    if (liveRegion) liveRegion.textContent = text; // Visual accessibility fallback
     if (!voiceEnabled || !window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
+    
+    window.speechSynthesis.cancel(); // Interrupt previous speech for responsiveness
     window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
 }
 
-// ANNOUNCEMENT HANDLER
+/**
+ * PAGE LOAD ANNOUNCEMENTS
+ * Handles system messages passed through the URL (e.g., upload success)
+ * and announces city transitions.
+ */
 (function() {
     setTimeout(() => {
         const params = new URLSearchParams(window.location.search);
+        // Check for specific 'announce' flag in query string
         if (params.has('announce')) {
             const msg = params.get('announce').replace(/_/g, ' ');
             speak(msg);
+            
+            // Cleanup URL to prevent announcement repeating on refresh
             params.delete('announce');
             const newUrl = window.location.pathname + '?' + params.toString() + window.location.hash;
             history.replaceState(null, '', newUrl);
@@ -309,13 +304,16 @@ function speak(text) {
     }, 200);
 })();
 
-// UI CONTROLS
+/**
+ * UI CONTROLS: COLOR MODES
+ * Applies a global CSS class to the <html> tag to trigger color-blind filters.
+ */
 function applyColorMode(mode) {
     document.documentElement.className = (mode !== "none") ? mode : "";
     if (colorSelect) colorSelect.value = mode;
 }
 
-// Voice toggle button
+// Voice feedback toggle event
 if (voiceBtn) {
     voiceBtn.onclick = () => {
         voiceEnabled = !voiceEnabled;
@@ -325,7 +323,7 @@ if (voiceBtn) {
     };
 }
 
-// Color-blind mode dropdown
+// Color-blind mode selection event
 if (colorSelect) {
     colorSelect.onchange = (e) => {
         const mode = e.target.value;
@@ -335,11 +333,15 @@ if (colorSelect) {
     };
 }
 
-// Apply saved color mode
+// Initial UI application from saved user preferences
 applyColorMode(localStorage.getItem("colorMode") || "none");
 if (voiceBtn) voiceBtn.textContent = `Voice Feedback: ${voiceEnabled ? "ON" : "OFF"}`;
 
-// SIDE PANEL TOGGLE LOGIC
+/**
+ * SIDE PANEL LOGIC
+ * Manages the 'Drawer' system for RSS and Weather.
+ * Ensures only one panel is active at a time and handles iframe lazy-loading.
+ */
 (function() {
     const rssBtn = document.getElementById('rssJump');
     const weatherBtn = document.getElementById('weatherJump');
@@ -348,35 +350,53 @@ if (voiceBtn) voiceBtn.textContent = `Voice Feedback: ${voiceEnabled ? "ON" : "O
     const rssPanel = document.getElementById('rssSidePanel');
     const weatherPanel = document.getElementById('weatherSidePanel');
 
+    /**
+     * Toggles visibility of side panels and adjusts map container size.
+     * @param {string} panelName - 'rss' or 'weather'
+     */
     function toggleSidePanel(panelName) {
         if (!mapRssRow) return;
+        
         const currentlyOpen = mapRssRow.classList.contains("rss-open");
         const activePanel = mapRssRow.dataset.activePanel || "";
 
+        // If clicking the button of a panel that is already open, close it.
         if (currentlyOpen && activePanel === panelName) {
             mapRssRow.classList.remove("rss-open");
             mapRssRow.dataset.activePanel = "";
             rssPanel?.classList.remove("active");
             weatherPanel?.classList.remove("active");
+            
             if (rssBtn) rssBtn.textContent = "View RSS Feed";
             if (weatherBtn) weatherBtn.textContent = "View Weather";
             speak("Hiding side panel");
+            
+            // Trigger map resize event so Leaflet updates its container bounds
             setTimeout(() => window.dispatchEvent(new Event("resize")), 200);
             return;
         }
 
+        // Lazy load the RSS iframe only when first requested
         if (panelName === "rss" && !rssFrame.getAttribute("src")) {
             const cityParam = "<?= isset($currentCityName) ? urlencode(strtolower($currentCityName)) : ''; ?>";
             rssFrame.setAttribute('src', 'rss_view.php?city=' + cityParam);
         }
 
+        // Update layout state
         mapRssRow.classList.add("rss-open");
         mapRssRow.dataset.activePanel = panelName;
+        
+        // Toggle specific panel visibility
         rssPanel?.classList.toggle("active", panelName === "rss");
         weatherPanel?.classList.toggle("active", panelName === "weather");
+        
+        // UI Text updates
         if (rssBtn) rssBtn.textContent = panelName === "rss" ? "Hide RSS Feed" : "View RSS Feed";
         if (weatherBtn) weatherBtn.textContent = panelName === "weather" ? "Hide Weather" : "View Weather";
+        
         speak("View " + panelName);
+        
+        // Recalculate map dimensions to prevent grey tiles
         setTimeout(() => window.dispatchEvent(new Event("resize")), 200);
     }
 
