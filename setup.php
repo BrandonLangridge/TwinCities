@@ -1,38 +1,30 @@
 <?php
 /**
- * setup.php
- *
- * Database Initialization Script
- * This script automates the creation of the database schema, defines table relationships,
- * and populates the system with initial seed data for City, POIs, and News.
+ * setup.php - Safe Database Initialization Script
+ * This version is idempotent: it can run multiple times without wiping existing data.
  */
 
-ob_start(); // Start output buffering to prevent header issues
+ob_start(); // Prevent header issues
 require_once 'config.php';
 
-// Extract database credentials from the global configuration array
+// Database credentials
 $host   = $config['db']['host'];
 $user   = $config['db']['user'];
 $pass   = $config['db']['pass'];
 $dbname = $config['db']['name'];
 
 try {
-    // 1. Establish initial connection to the MySQL server
-    // Note: We connect without a database name first to allow for the DROP/CREATE logic below.
+    // 1. Connect to MySQL server (no DB selected yet)
     $pdo = new PDO("mysql:host=$host;charset=utf8mb4", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // 2. Database Fresh Start
-    // WARNING: This will delete any existing data in the specified database name.
-    $pdo->exec("DROP DATABASE IF EXISTS `$dbname`");
-    $pdo->exec("CREATE DATABASE `$dbname` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+    // 2. Create database if not exists
+    $pdo->exec("CREATE DATABASE IF NOT EXISTS `$dbname` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
     $pdo->exec("USE `$dbname`");
 
-    // 3. Schema Definition
-    // Tables are defined in an array and executed sequentially to maintain Foreign Key integrity.
+    // 3. Create tables if not exists
     $tableQueries = [
-        // Primary entity: All other tables depend on city_id
-        "CREATE TABLE City (
+        "CREATE TABLE IF NOT EXISTS City (
             city_id INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(100) NOT NULL,
             country VARCHAR(100) NOT NULL,
@@ -44,8 +36,7 @@ try {
             UNIQUE (name, country)
         ) ENGINE=InnoDB",
 
-        // User interaction table: Linked to City
-        "CREATE TABLE Comment (
+        "CREATE TABLE IF NOT EXISTS Comment (
             comment_id INT AUTO_INCREMENT PRIMARY KEY,
             user_name VARCHAR(100) NOT NULL,
             comment_text TEXT NOT NULL,
@@ -56,8 +47,7 @@ try {
             INDEX (search_query)
         ) ENGINE=InnoDB",
 
-        // Points of Interest: Detailed tourist/geographical data
-        "CREATE TABLE Place_of_Interest (
+        "CREATE TABLE IF NOT EXISTS Place_of_Interest (
             poi_id INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(150) NOT NULL,
             type VARCHAR(50) NOT NULL,
@@ -72,8 +62,7 @@ try {
             CONSTRAINT fk_poi_city FOREIGN KEY (city_id) REFERENCES City(city_id) ON DELETE CASCADE
         ) ENGINE=InnoDB",
 
-        // Media assets: Includes optimized index for the search widget
-        "CREATE TABLE Photo (
+        "CREATE TABLE IF NOT EXISTS Photo (
             photo_id INT AUTO_INCREMENT PRIMARY KEY,
             city_id INT NOT NULL,
             page_num INT NOT NULL,
@@ -84,8 +73,7 @@ try {
             INDEX (city_id, caption)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4",
 
-        // News feed: Localized headlines and content
-        "CREATE TABLE News (
+        "CREATE TABLE IF NOT EXISTS News (
             news_id INT AUTO_INCREMENT PRIMARY KEY,
             headline VARCHAR(255) NOT NULL,
             body TEXT NOT NULL,
@@ -95,54 +83,80 @@ try {
         ) ENGINE=InnoDB"
     ];
 
-    // Execute table creation loop
     foreach ($tableQueries as $query) {
         $pdo->exec($query);
     }
 
-    // 4. Seed Data: Master City Records
-    $citySql = "
-    INSERT INTO City (city_id, name, country, population, latitude, longitude, currency, description) VALUES
-        (1, 'Liverpool', 'UK', 496784, 53.4084, -2.9916, 'GBP', 'A maritime city in northwest England.'),
-        (2, 'Cologne', 'Germany', 1086000, 50.9375, 6.9603, 'EUR', 'A 2,000-year-old city spanning the Rhine River.');
-    ";
-    $pdo->exec($citySql);
+    // 4. Seed Cities (only if missing)
+    $cities = [
+        ['Liverpool','UK',496784,53.4084,-2.9916,'GBP','A maritime city in northwest England.'],
+        ['Cologne','Germany',1086000,50.9375,6.9603,'EUR','A 2,000-year-old city spanning the Rhine River.']
+    ];
 
-    // 5. Seed Data: Places of Interest (POIs)
-    $poiSql = "
-    INSERT INTO Place_of_Interest (name, type, capacity, latitude, longitude, description, year_opened, entry_fee, rating, city_id) VALUES
-        ('The Beatles Story', 'Museum', NULL, 53.39930300, -2.99206600, 'Museum dedicated to the life and music of The Beatles.', 1990, '£18', 4.5, 1),
-        ('Liverpool Cathedral', 'Religious Site', 2200, 53.39744600, -2.97317000, 'The largest cathedral in the UK.', 1924, 'Free', 4.8, 1),
-        ('Royal Liver Building', 'Historic Building', NULL, 53.40587200, -2.99584800, 'Iconic early skyscraper on Liverpool waterfront.', 1911, 'Paid tours', 4.6, 1),
-        ('Walker Art Gallery', 'Art Gallery', NULL, 53.41005900, -2.97963900, 'National gallery of arts for the North West.', 1877, 'Free', 4.6, 1),
-        ('Anfield Stadium', 'Sports Venue', 61000, 53.43095100, -2.96090100, 'Historic football stadium and home of Liverpool FC.', 1884, '£23', 4.9, 1),
-        ('Sefton Park', 'Park', NULL, 53.38256000, -2.93657000, 'Large Victorian public park covering 235 acres.', 1872, 'Free', 4.6, 1),
-        ('Cologne Cathedral', 'Religious Site', 20000, 50.94133400, 6.95813300, 'Gothic Roman Catholic cathedral and UNESCO site.', 1880, 'Free', 4.8, 2),
-        ('Museum Ludwig', 'Museum', NULL, 50.94084900, 6.96003700, 'Museum of modern and contemporary art.', 1976, '€12', 4.5, 2),
-        ('Hohenzollern Bridge', 'Landmark', NULL, 50.94140700, 6.96585800, 'Iconic railway and pedestrian bridge.', 1911, 'Free', 4.7, 2),
-        ('Cologne Zoo', 'Zoo', NULL, 50.96159000, 6.97655000, 'One of the oldest zoological gardens in Germany.', 1860, '€23', 4.6, 2),
-        ('Roman-Germanic Museum', 'Museum', NULL, 50.94055400, 6.95866400, 'Archaeological museum with Roman artefacts.', 1974, '€9', 4.5, 2),
-        ('Cologne City Hall', 'Historic Building', NULL, 50.93863400, 6.95873900, 'One of the oldest town halls in Germany.', 1135, 'Free', 4.4, 2);
-    ";
-    $pdo->exec($poiSql);
+    $stmtCheckCity = $pdo->prepare("SELECT COUNT(*) FROM City WHERE name = ? AND country = ?");
+    $stmtInsertCity = $pdo->prepare("INSERT INTO City (name, country, population, latitude, longitude, currency, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-    // 6. Seed Data: News Articles
-    $newsSql = "
-    INSERT INTO News (headline, body, published_at, city_id) VALUES
-        ('Liverpool Waterfront UNESCO', 'The iconic waterfront celebrated as a commercial architecture masterpiece.', '2025-10-15 09:00:00', 1),
-        ('Anfield Expansion Approved', 'Council approves plans to increase capacity to over 61,000.', '2025-11-02 14:30:00', 1),
-        ('Walker Gallery Exhibition', 'Major new exhibition showcasing contemporary artists opened.', '2025-12-01 10:00:00', 1),
-        ('Cologne Cathedral Restoration', 'Iconic twin spires set to be fully unveiled in 2026.', '2025-09-20 08:00:00', 2),
-        ('Love Locks Preserved', 'Authorities reverse proposal to remove locks from Hohenzollern Bridge.', '2025-10-30 11:15:00', 2),
-        ('Museum Ludwig Acquisition', 'Museum acquires twelve previously unseen works by Picasso.', '2025-11-18 16:00:00', 2);
-    ";
-    $pdo->exec($newsSql);
+    foreach ($cities as $c) {
+        [$name, $country, $pop, $lat, $lon, $currency, $desc] = $c;
+        $stmtCheckCity->execute([$name, $country]);
+        if ($stmtCheckCity->fetchColumn() == 0) {
+            $stmtInsertCity->execute([$name, $country, $pop, $lat, $lon, $currency, $desc]);
+        }
+    }
+
+    // 5. Seed POIs (only if missing)
+    $poiRows = [
+        ['The Beatles Story','Museum',null,53.39930300,-2.99206600,'Museum dedicated to the life and music of The Beatles.',1990,'£18',4.5,'Liverpool'],
+        ['Liverpool Cathedral','Religious Site',2200,53.39744600,-2.97317000,'The largest cathedral in the UK.',1924,'Free',4.8,'Liverpool'],
+        ['Royal Liver Building','Historic Building',null,53.40587200,-2.99584800,'Iconic early skyscraper on Liverpool waterfront.',1911,'Paid tours',4.6,'Liverpool'],
+        ['Walker Art Gallery','Art Gallery',null,53.41005900,-2.97963900,'National gallery of arts for the North West.',1877,'Free',4.6,'Liverpool'],
+        ['Anfield Stadium','Sports Venue',61000,53.43095100,-2.96090100,'Historic football stadium and home of Liverpool FC.',1884,'£23',4.9,'Liverpool'],
+        ['Sefton Park','Park',null,53.38256000,-2.93657000,'Large Victorian public park covering 235 acres.',1872,'Free',4.6,'Liverpool'],
+        ['Cologne Cathedral','Religious Site',20000,50.94133400,6.95813300,'Gothic Roman Catholic cathedral and UNESCO site.',1880,'Free',4.8,'Cologne'],
+        ['Museum Ludwig','Museum',null,50.94084900,6.96003700,'Museum of modern and contemporary art.',1976,'€12',4.5,'Cologne'],
+        ['Hohenzollern Bridge','Landmark',null,50.94140700,6.96585800,'Iconic railway and pedestrian bridge.',1911,'Free',4.7,'Cologne'],
+        ['Cologne Zoo','Zoo',null,50.96159000,6.97655000,'One of the oldest zoological gardens in Germany.',1860,'€23',4.6,'Cologne'],
+        ['Roman-Germanic Museum','Museum',null,50.94055400,6.95866400,'Archaeological museum with Roman artefacts.',1974,'€9',4.5,'Cologne'],
+        ['Cologne City Hall','Historic Building',null,50.93863400,6.95873900,'One of the oldest town halls in Germany.',1135,'Free',4.4,'Cologne']
+    ];
+
+    $stmtCheckPOI = $pdo->prepare("SELECT COUNT(*) FROM Place_of_Interest WHERE name = ? AND city_id = (SELECT city_id FROM City WHERE name = ?)");
+    $stmtInsertPOI = $pdo->prepare("INSERT INTO Place_of_Interest (name,type,capacity,latitude,longitude,description,year_opened,entry_fee,rating,city_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, (SELECT city_id FROM City WHERE name = ?))");
+
+    foreach ($poiRows as $p) {
+        [$name,$type,$capacity,$lat,$lon,$desc,$year,$fee,$rating,$cityName] = $p;
+        $stmtCheckPOI->execute([$name,$cityName]);
+        if ($stmtCheckPOI->fetchColumn() == 0) {
+            $stmtInsertPOI->execute([$name,$type,$capacity,$lat,$lon,$desc,$year,$fee,$rating,$cityName]);
+        }
+    }
+
+    // 6. Seed News (only if missing)
+    $newsRows = [
+        ['Liverpool Waterfront UNESCO','The iconic waterfront celebrated as a commercial architecture masterpiece.','2025-10-15 09:00:00','Liverpool'],
+        ['Anfield Expansion Approved','Council approves plans to increase capacity to over 61,000.','2025-11-02 14:30:00','Liverpool'],
+        ['Walker Gallery Exhibition','Major new exhibition showcasing contemporary artists opened.','2025-12-01 10:00:00','Liverpool'],
+        ['Cologne Cathedral Restoration','Iconic twin spires set to be fully unveiled in 2026.','2025-09-20 08:00:00','Cologne'],
+        ['Love Locks Preserved','Authorities reverse proposal to remove locks from Hohenzollern Bridge.','2025-10-30 11:15:00','Cologne'],
+        ['Museum Ludwig Acquisition','Museum acquires twelve previously unseen works by Picasso.','2025-11-18 16:00:00','Cologne']
+    ];
+
+    $stmtCheckNews = $pdo->prepare("SELECT COUNT(*) FROM News WHERE headline = ? AND city_id = (SELECT city_id FROM City WHERE name = ?)");
+    $stmtInsertNews = $pdo->prepare("INSERT INTO News (headline,body,published_at,city_id) VALUES (?, ?, ?, (SELECT city_id FROM City WHERE name = ?))");
+
+    foreach ($newsRows as $n) {
+        [$headline,$body,$published_at,$cityName] = $n;
+        $stmtCheckNews->execute([$headline,$cityName]);
+        if ($stmtCheckNews->fetchColumn() == 0) {
+            $stmtInsertNews->execute([$headline,$body,$published_at,$cityName]);
+        }
+    }
 
 } catch (Exception $e) {
-    // Standard error handling: Stop execution and output the specific PDO error
-    die("Setup Failed: " . $e->getMessage());
+    // Let the global exception handler manage it
+    throw $e;
 }
 
-// Successful completion: Redirect to homepage
+// Redirect to homepage after setup
 header("Location: index.php");
 exit;
