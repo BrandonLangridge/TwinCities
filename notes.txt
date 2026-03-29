@@ -1,30 +1,42 @@
--------------Changes made-------------
+--------------path for demo----------------
 
-Everything on one page, per Prakash request
-File restructure
-API photos now load more consistently
-RSS filtered by cities
-Very poor mobile screen provisions removed entirely (this version is not for mobiles)
-Access to the config by users is now forbidden (via .htaccess file)
-We use 'define' to implement constants where appropriate (the config)
-Error handling implemented including 404 page
-Uploaded pics now use the database to store their links
-API calls for weather and pictures now fail gracefully
-Comments and commenter names can't be infinitely long
-Pictures have max file size
-Photo widget now cleans outdated database entries
-Various previous sources of data now done by setup.php
-Added favicon (yay!)
+load root (index.php)
+click liverpool
+voice feedback?
+hover poi
+click poi
+click read aloud
+click read full article
+back to page
+view rss
+click liverpool cathedral
+view raw xml
+view weather
+click photo widget for bigger picture
+see pixabay link
+next pictures
+upload picture
+upload picture too large
+upload picture wrong file type
+make comment
+show comment restraints in fields
+show database entries for pics and comments
+delete comment
+colour-blind modes
+switch to cologne
+demonstrate 404
+stop the database to demonstrate errors
+show error log
+demonstrate ht access forbidden by trying to view error log or config
+show setup.php code
 
--------------Changes needed-------------
 
-ER diagrams must match the current database
+-------------Tasks completed-------------
 
+ER diagrams match the current database
+Script for demo written
+Screenshots taken for photo api success, weather success and photo independent implemenation
 
--------------Other jobs to do-------------
-
-Draft a scripted path for the demo that includes everything we want to show Prakash.
-Take backup screenshots of anything that relies on API call success.
 
 -------------List of files, changes, and who is their primary creator-------------
 
