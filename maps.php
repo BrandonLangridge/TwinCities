@@ -1,12 +1,13 @@
 <?php
 /* maps.php */
-
-require_once "config.php"; 
-
 // Map Component
+
+require_once 'config.php';
+
 ?>
 
 <!-- Map Container -->
+<!-- target ID for the leaflet library (injecting map tiles and controls) -->
 <div id="map-wrapper">
   <div id="map"></div>
 </div>
@@ -21,10 +22,10 @@ require_once "config.php";
   </div>
 </div>
 
-<!-- Leaflet JS library -->
+<!-- Leaflet JS library (Provides the functions needed to render tiles, handle zooms and place markers) -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-<!-- Main map script with cache-busting query string -->
+<!-- Main map script with cache-busting query string (force browser to download fresh version of maps.js) -->
 <script src="maps.js?v=<?= urlencode($assetVersion); ?>"></script>
 
 <script>
