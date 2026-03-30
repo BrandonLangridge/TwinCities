@@ -1,26 +1,27 @@
 <?php
 
-/**
- * photo_widget.php - Full Updated Version
- * * This file serves as both a standalone page and a modular widget.
- * 1. Environment detection: Checks if it's being included or run directly.
- * 2. File upload processing: Validates and saves user-submitted images.
- * 3. Data merging: Combines local database uploads with external API results.
- * 4. UI rendering: Displays a paginated photo grid with a modal viewer.
- */
+// photo_widget.php
+// Serves as both a standalone page and a modular widget using environment check to see if standalone or included
+// Upload Handler: Validates file size/type and saves local path to the database.
+// Post-Redirect-Get: Redirects after POST to prevent resubmission and resets to page 1.
 
-// --- SESSION MANAGEMENT ---
-// Sessions are used to persist upload error messages across the PRG (Post-Redirect-Get) pattern.
+// Session Management: Checks if a session is already active and if not it starts one to store upload messages for user feedback.
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// --- 1. BOOTSTRAP / STANDALONE CHECK ---
-// If $pdo isn't defined, the file is likely being accessed directly rather than included.
+// Environment Detection: Checks if $pdo exists to determine if the file is running as a standalone page or an included widget.
+// Setup Logic: If standalone, it manually loads configurations and resolves the city_id from the URL parameters.
+// Standalone Flag: Sets $isStandalone to control whether full HTML headers and footers are rendered.
+
+// if pdo is not set, we are running this file directly
 if (!isset($pdo)) {
-    // Load configuration and core logic functions
-    $config = require_once __DIR__ . '/config.php';
-    require_once __DIR__ . '/photo_logic.php';
+
+    // require_once: Loads config.php and halts with a fatal error if missing.
+    // once: Prevents redeclaration errors by ensuring the file is only loaded one time.
+    require_once 'config.php';
+    require_once 'photo_logic.php';
+
 
     // Default city data for the standalone switcher UI
     $cities = [
@@ -28,7 +29,7 @@ if (!isset($pdo)) {
         "Cologne"   => ["image" => "app_images/cologne.jpg"]
     ];
 
-    // Determine current city from URL; default to Liverpool
+    // Determine current city from URL. If none provided, default to Liverpool.
     $currentCityName = isset($_GET['city']) ? ucfirst($_GET['city']) : 'Liverpool';
 
     // Lookup the internal ID for the current city to query the database correctly
@@ -38,24 +39,27 @@ if (!isset($pdo)) {
 
     $isStandalone = true;
 } else {
-    // Variable was already set by a parent file (e.g., index.php)
+    // Variable was already set by a parent file (index.php)
     $isStandalone = false;
 }
 
-// Ensure business logic functions are available regardless of entry point
-require_once __DIR__ . '/photo_logic.php';
+// require these if running standalone 
+require_once 'config.php';
+require_once 'photo_logic.php';
 
-// --- 2. UPLOAD PROCESSING ---
-// Handle POST requests triggered by the hidden file input
+// Upload handling: Checks for a POST request containing a file.
+// Validation: Verifies the file is under 2MB and is a JPEG or PNG.
+// Storage: Creates the user_pics/ folder and saves the file with a unique timestamped name.
+// Database: Records the new image path and its city_id in the Photo table.
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['new_photo'])) {
     $upload_city_id = (int)($_POST['city_id'] ?? $currentCityId);
     $file = $_FILES['new_photo'];
 
-    // Security/Validation Check: File size (limit 2MB)
+    
     if ($file['size'] > 2 * 1024 * 1024) {
         $_SESSION['upload_msg'] = 'too_big';
     }
-    // Security/Validation Check: MIME type whitelist
+    
     elseif (!in_array($file['type'], ['image/jpeg', 'image/jpg', 'image/png'])) {
         $_SESSION['upload_msg'] = 'wrong_type';
     }
@@ -86,17 +90,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['new_photo'])) {
     if (!$isStandalone) {
         $query['announce'] = 'picture_added_to_page_1';
     }
-
+    // Sends the browser to the updated URL with the new query parameters and anchors to the photo widget section.
     header("Location: " . ($url_parts['path'] ?? 'index.php') . '?' . http_build_query($query) . '#photo-widget');
     exit;
 }
 
-// --- 3. DATA VIEWING & PAGINATION ---
-$per_page = 3; // Number of images to show per page
+// Sets a 3-image limit per page and sanitises the current page number from the URL.
+$per_page = 3;
 $page = isset($_GET['p']) ? (int)$_GET['p'] : 1;
 if ($page < 1) $page = 1;
 
-// First, fetch photos uploaded by users from the local DB
+// Fetch photos uploaded by users from the local DB
 $user_photos = get_local_user_photos($pdo, (int)$currentCityId, $page, $per_page);
 
 // If user photos don't fill the 'per_page' limit, fill the remaining slots with API photos
@@ -114,14 +118,13 @@ if ($slots > 0) {
     }
 }
 
-// --- 4. NAVIGATION PREPARATION ---
+// Identifies the current file and calculates values for the city switcher and pagination links.
 $current_file = basename($_SERVER['PHP_SELF']);
 $otherCityName = (strtolower($currentCityName) === 'liverpool') ? 'Cologne' : 'Liverpool';
-
 $prev_page = max(1, $page - 1);
 $next_page = $page + 1;
 
-// Define "announce" strings for screen readers (typically handled by the parent container)
+// Define "announce" strings for screen readers (handled by the parent container)
 $ann_p = !$isStandalone ? "&announce=" . $currentCityName . "_pictures_page_" . $prev_page : "";
 $ann_n = !$isStandalone ? "&announce=" . $currentCityName . "_pictures_page_" . $next_page : "";
 $ann_s = !$isStandalone ? "&announce=Switching_to_" . $otherCityName : "";
@@ -131,7 +134,7 @@ $prev_url = "?city=" . strtolower($currentCityName) . "&p=" . $prev_page . $ann_
 $next_url = "?city=" . strtolower($currentCityName) . "&p=" . $next_page . $ann_n . "#photo-widget";
 $switch_url = $current_file . "?city=" . strtolower($otherCityName) . "&p=1" . $ann_s . "#photo-widget";
 ?>
-
+<!-- if not imported by another page then display the widget itself -->
 <?php if ($isStandalone): ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -156,7 +159,7 @@ $switch_url = $current_file . "?city=" . strtolower($otherCityName) . "&p=1" . $
     <div id="photo-widget" class="city-card photo-widget-card">
 
         <?php
-        // Retrieve and clear upload messages from the session
+        // Fetches errors from the session abd immediately deletes it to prevent re-display then renders the specific alert to the user.
         $msg = $_SESSION['upload_msg'] ?? null;
         unset($_SESSION['upload_msg']);
         if ($msg && $msg !== 'success'): ?>
@@ -210,11 +213,7 @@ $switch_url = $current_file . "?city=" . strtolower($otherCityName) . "&p=1" . $
     </div>
 
     <script>
-        /**
-         * Opens the modal and populates the image/link.
-         * @param {string} src - The image URL
-         * @param {string|null} pixUrl - Optional URL to the Pixabay source page
-         */
+        // Displays modal for bigger images, toggling the Pixabay link based on the image source.
         function openPhotoModal(src, pixUrl = null) {
             const modal = document.getElementById('imageModal');
             const pixLink = document.getElementById('pixabayLink');

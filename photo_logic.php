@@ -1,24 +1,22 @@
 <?php
-/**
- * photo_logic.php
- * Core logic for the Photo system: Handles DB fetching, 
- * Pixabay API integration, and cache management.
- */
 
+// Handles URL validation and local DB fetching.
+// Handles pagination math and cache cleanup.
+// Handles API request building and connection stability.
+// Handles JSON processing and URL fallback logic.
+// Handles slot management and cache population.
 
+// require_once: Loads config.php and halts with a fatal error if missing.
+// once: Prevents redeclaration errors by ensuring the file is only loaded one time.
 require_once 'config.php';
 
-/**
- * Validates if a string is a properly formatted URL or a local path.
- * Updated to support the 'user_pics/' directory.
- */
+// is_usable_photo_url: Validates if a string is a non-empty web URL or a local user_pics/ path.
 function is_usable_photo_url(string $url): bool {
     return $url !== '' && (filter_var($url, FILTER_VALIDATE_URL) !== false || strpos($url, 'user_pics/') === 0);
 }
 
-/**
- * Fetches photos uploaded by users from the local database.
- */
+// get_local_user_photos: Fetches a paginated list of user-uploaded image URLs for a specific city.
+// Logic: Calculates a row offset and executes a sanitised SQL query to prevent injection.
 function get_local_user_photos($pdo, int $city_id, int $page, int $per_page): array {
     $offset = (int)(($page - 1) * $per_page);
     
@@ -38,9 +36,8 @@ function get_local_user_photos($pdo, int $city_id, int $page, int $per_page): ar
     return $stmt->fetchAll(PDO::FETCH_COLUMN) ?: [];
 }
 
-/**
- * Retrieves valid (non-expired) Pixabay photos from the local cache.
- */
+// get_cached_api_photos: Retrieves valid, non-expired API images from the local cache.
+// Logic: Uses a $cutoff timestamp to filter out any photos older than the defined $cache_lifetime.
 function get_cached_api_photos($pdo, int $city_id, int $page, int $slots, int $cache_lifetime): array {
     $cutoff = date('Y-m-d H:i:s', time() - $cache_lifetime);
     
@@ -62,10 +59,12 @@ function get_cached_api_photos($pdo, int $city_id, int $page, int $slots, int $c
     return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
 }
 
-/**
- * Hits the Pixabay API for new images and caches them in the database.
- * Includes 15-second timeout and automatic cache cleanup.
- */
+// fetch_pixabay_photos: Clears expired cache and pulls fresh images from Pixabay API.
+// Cleanup: Deletes non-user photos older than one hour to keep the database light.
+// API Request: Builds a secure, filtered URL and fetches JSON with a 15-second timeout.
+// Error Handling: Throws exceptions if the connection fails or if the JSON is corrupted.
+// Fallback Logic: If best photo size (webformatURL) is missing, it tries smaller or larger alternatives before giving up on that entry.
+// Cache & Limit: Saves new results to the DB and stops once the $needed_count is met.
 function fetch_pixabay_photos($pdo, string $api_key, int $city_id, string $city_name, int $page, int $needed_count, int $per_page): array {
     
     // 1. Cleanup old cached API photos (1 hour TTL)
